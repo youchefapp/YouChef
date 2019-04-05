@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Recetas
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar placeholder="Buscar receta"></ion-searchbar>
+
+    <ion-card *ngFor="let r of recetas">
+        <img src="assets/img/recetas/{{r.id}}.jpg" alt="">
+        <ion-card-header>
+            <ion-card-subtitle>Receta</ion-card-subtitle>
+            <ion-card-title>{{r.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            Descripción de la receta
+        </ion-card-content>
+    </ion-card>
+</ion-content>
