@@ -8,17 +8,34 @@
 
 <ion-content>
 
-    <ion-searchbar placeholder="Buscar receta"></ion-searchbar>
+    <ion-searchbar (ionInput)="search($event)" placeholder="Buscar receta"></ion-searchbar>
 
     <ion-card *ngFor="let r of recetas">
         <img src="assets/img/recetas/{{r.id}}.jpg" alt="">
         <ion-card-header>
-            <ion-card-subtitle>Receta</ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon name="restaurant"></ion-icon>
+                {{r.cuisine}}
+            </ion-card-subtitle>
             <ion-card-title>{{r.name}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
-            Descripción de la receta
+            <ng-container *ngFor="let t of r.tags; let i = index">{{t}}{{i
+                < r.tags.length - 1 ? ', ' : ''}}</ng-container>
+                    <p>
+                        <ion-icon name="thumbs-up"></ion-icon><strong> Dificultad: </strong>{{r.difficulty}}</p>
+                    <p>
+                        <ion-icon name="stopwatch"></ion-icon><strong> Duración: </strong>{{r.duration}}</p>
+                    <p>
+                        <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{r.rations}}</p>
+                    <p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías: </strong>{{r.calories}} kcal</p>
         </ion-card-content>
     </ion-card>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más recetas...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

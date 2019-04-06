@@ -12,12 +12,12 @@ import { Storage } from '@ionic/storage';
 })
 export class RecetasService {
   database: SQLiteObject;
-  private recetasNames: any[];
+  private recetas: any[];
   private databaseReady: BehaviorSubject<boolean>;
 
   constructor(public sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform, private http: Http) {
     this.databaseReady = new BehaviorSubject(false);
-    this.recetasNames = [];
+    this.recetas = [];
     this.platform.ready().then(() => {
       this.sqlite.create({
         name: 'recipes.db',
@@ -38,8 +38,8 @@ export class RecetasService {
 
   fillDatabase() {
     this.http.get('assets/recipes.sql')
-    .pipe(
-      map(res => res.text()))
+      .pipe(
+        map(res => res.text()))
       .subscribe(sql => {
         this.sqlitePorter.importSqlToDb(this.database, sql)
           .then(data => {
@@ -50,20 +50,46 @@ export class RecetasService {
       });
   }
 
-  getRecipes() {
-    return this.database.executeSql("SELECT * FROM recipe", []).then((data) => {
+  getRecipes(limit, offset) {
+    return this.database.executeSql("SELECT * FROM recipe LIMIT ? OFFSET ?", [limit, offset]).then((data) => {
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
-          this.recetasNames.push(data.rows.item(i));
+          let receta = data.rows.item(i);
+
+          this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
+            let tags = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              tags.push(data.rows.item(i).tag);
+            }
+            receta.tags = tags;
+          });
+
+          this.recetas.push(receta);
         }
-        console.log("Number of recipes on database = " + this.recetasNames.length);
+        console.log("Number of recipes on database = " + this.recetas.length);
       }
 
-      return this.recetasNames;
+      return this.recetas;
     }, err => {
       console.log('Error: ', err);
       return [];
     });
+  }
+
+  searchRecipe(name) {
+
+    return this.database.executeSql("SELECT * FROM recipe AS r WHERE r.name LIKE '%" + name + "%'", []).then((data) => {
+      let recipes = [];
+      for (let i = 0; i < data.rows.length; i++) {
+        recipes.push(data.rows.item(i));
+      }
+
+      return recipes;
+    })
+  }
+
+  getNumberOfRecipes() {
+    return this.database.executeSql("SELECT COALESCE(MAX(id)+1, 0) AS numRecipes FROM recipe", []);
   }
 
   getDatabaseState() {
