@@ -80,22 +80,7 @@ export class RecetasPage {
 
   search(event) {
     this.searchVal = event.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4) {
-      this.offset = LIMIT;
-      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, 
-                                                              this.cocina,
-                                                              this.dificultad,
-                                                              this.dieta,
-                                                              this.alergenos);
-      this.recetas = this.filteredRecetas;
-
-      if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
-    }
-    else {
-      this.recetas = this.allRecetas;
-    }
+    this.filter();
   }
 
   filter() {
@@ -131,7 +116,7 @@ export class RecetasPage {
            || this.dificultad.length != 0
            || this.dieta.length != 0
            || this.alergenos.length != 0
-           || this.searchVal != "";
+           || this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4;
   }
 
   async presentLoading() {
