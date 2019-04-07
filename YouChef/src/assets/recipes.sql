@@ -3,23 +3,23 @@ CREATE TABLE IF NOT EXISTS `tag` (
 	`tag`	VARCHAR ( 255 ) NOT NULL,
 	PRIMARY KEY(`id`)
 );
-INSERT INTO `tag` (id,tag) VALUES (1,'Egg-Free');
-INSERT INTO `tag` (id,tag) VALUES (2,'Peanut-Free');
-INSERT INTO `tag` (id,tag) VALUES (3,'Tree-Nut-Free');
-INSERT INTO `tag` (id,tag) VALUES (4,'Soy-Free');
-INSERT INTO `tag` (id,tag) VALUES (5,'Fish-Free');
-INSERT INTO `tag` (id,tag) VALUES (6,'Shellfish-Free');
-INSERT INTO `tag` (id,tag) VALUES (7,'Low-Carb');
-INSERT INTO `tag` (id,tag) VALUES (8,'Vegetarian');
-INSERT INTO `tag` (id,tag) VALUES (9,'Gluten-Free');
-INSERT INTO `tag` (id,tag) VALUES (10,'Balanced');
-INSERT INTO `tag` (id,tag) VALUES (11,'High-Fiber');
-INSERT INTO `tag` (id,tag) VALUES (12,'Low-Sodium');
-INSERT INTO `tag` (id,tag) VALUES (13,'Vegan');
-INSERT INTO `tag` (id,tag) VALUES (14,'Dairy-Free');
-INSERT INTO `tag` (id,tag) VALUES (15,'Paleo');
-INSERT INTO `tag` (id,tag) VALUES (16,'High-Protein');
-INSERT INTO `tag` (id,tag) VALUES (17,'Low-Fat');
+INSERT INTO tag(id,tag) VALUES (1,'Sin huevo');
+INSERT INTO tag(id,tag) VALUES (2,'Libre de nueces y de cacahuetes');
+INSERT INTO tag(id,tag) VALUES (3,'Sin frutos secos');
+INSERT INTO tag(id,tag) VALUES (4,'Sin soja');
+INSERT INTO tag(id,tag) VALUES (5,'Sin pescado');
+INSERT INTO tag(id,tag) VALUES (6,'Sin mariscos');
+INSERT INTO tag(id,tag) VALUES (7,'Bajo en carbohidratos');
+INSERT INTO tag(id,tag) VALUES (8,'Vegetariano');
+INSERT INTO tag(id,tag) VALUES (9,'Sin glutén');
+INSERT INTO tag(id,tag) VALUES (10,'Equilibrada');
+INSERT INTO tag(id,tag) VALUES (11,'Mucha fibra');
+INSERT INTO tag(id,tag) VALUES (12,'Bajo en sodio');
+INSERT INTO tag(id,tag) VALUES (13,'Vegano');
+INSERT INTO tag(id,tag) VALUES (14,'Sin lácteos');
+INSERT INTO tag(id,tag) VALUES (15,'Paleo');
+INSERT INTO tag(id,tag) VALUES (16,'Alto valor proteíco');
+INSERT INTO tag(id,tag) VALUES (17,'Bajo en grasas');
 CREATE TABLE IF NOT EXISTS `recipe_tags` (
 	`recipe_id`	INTEGER NOT NULL,
 	`tags_id`	INTEGER NOT NULL,

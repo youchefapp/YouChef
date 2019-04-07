@@ -84,7 +84,11 @@ export class RecetasPage {
     // if the value is an empty string don't filter the items
     if (this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4) {
       this.offset = LIMIT;
-      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, this.cocina, this.dificultad);
+      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, 
+                                                              this.cocina,
+                                                              this.dificultad,
+                                                              this.dieta,
+                                                              this.alergenos);
       this.recetas = this.filteredRecetas;
 
       if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
@@ -95,9 +99,13 @@ export class RecetasPage {
   }
 
   filter() {
-    if (this.cocina.length != 0 || this.dificultad.length != 0 || this.searchVal != "") {
+    if (this.isAnyFilterActivated()) {
       this.offset = LIMIT;
-      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, this.cocina, this.dificultad);
+      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal,
+                                                              this.cocina,
+                                                              this.dificultad,
+                                                              this.dieta,
+                                                              this.alergenos);
       this.recetas = this.filteredRecetas;
 
       if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
@@ -105,6 +113,25 @@ export class RecetasPage {
     else {
       this.recetas = this.allRecetas;
     }
+  }
+
+  clearFilters() {
+    this.offset = LIMIT;
+    this.searchVal = "";
+    this.cocina = [];
+    this.dificultad = [];
+    this.dieta = [];
+    this.alergenos = [];
+
+    this.recetas = this.allRecetas;
+  }
+
+  private isAnyFilterActivated(): boolean {
+    return this.cocina.length != 0
+           || this.dificultad.length != 0
+           || this.dieta.length != 0
+           || this.alergenos.length != 0
+           || this.searchVal != "";
   }
 
   async presentLoading() {

@@ -76,11 +76,13 @@ export class RecetasService {
     });
   }
 
-  searchRecipe(name, cocina, dificultad) {
+  searchRecipe(name, cocina, dificultad, dieta, alergenos) {
     return this.recetas.filter(receta => {
       return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1
-             && this.filterCocina(receta, cocina)
-             && this.filterDificultad(receta, dificultad);
+        && this.filterCocina(receta, cocina)
+        && this.filterDificultad(receta, dificultad)
+        && this.filterDieta(receta, dieta)
+        && this.filterAlergenos(receta, alergenos);
     });
   }
 
@@ -89,7 +91,19 @@ export class RecetasService {
   }
 
   private filterDificultad(receta, dificultad): boolean {
-    return dificultad.length != 0? dificultad.indexOf(receta.difficulty) > -1 : true;
+    return dificultad.length != 0 ? dificultad.indexOf(receta.difficulty) > -1 : true;
+  }
+
+  private filterDieta(receta, dieta): boolean {
+    return dieta.length != 0 ? this.containsAllElems(receta.tags, dieta) : true;
+  }
+
+  private filterAlergenos(receta, alergenos): boolean {
+    return alergenos.length != 0 ? this.containsAllElems(receta.tags, alergenos) : true;
+  }
+
+  private containsAllElems(arr, target) {
+    return target.every(v => arr.includes(v));
   }
 
   getNumberOfRecipes() {
