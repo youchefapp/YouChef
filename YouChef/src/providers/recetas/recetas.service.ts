@@ -57,6 +57,17 @@ export class RecetasService {
         for (let i = 0; i < data.rows.length; i++) {
           let receta = data.rows.item(i);
 
+          receta.steps = JSON.parse(receta.steps);
+
+          let steps = [];
+          for (var paso in receta.steps) {
+            if (receta.steps.hasOwnProperty(paso)) {
+              steps.push(receta.steps[paso]);
+            }
+          }
+
+          receta.steps = steps;
+
           this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
             let tags = [];
             for (let i = 0; i < data.rows.length; i++) {
@@ -71,30 +82,6 @@ export class RecetasService {
       }
 
       return this.recetas;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
-    });
-  }
-
-  getRecipe(id) {
-    return this.database.executeSql("SELECT * FROM recipe WHERE recipe.id = ?", [id]).then((data) => {
-      let receta = null;
-      if (data.rows.length > 0) {
-          receta = data.rows.item(0);
-
-          receta.steps = JSON.parse(receta.steps);
-
-          this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
-            let tags = [];
-            for (let i = 0; i < data.rows.length; i++) {
-              tags.push(data.rows.item(i).tag);
-            }
-            receta.tags = tags;
-          });
-      }
-
-      return receta;
     }, err => {
       console.log('Error: ', err);
       return [];

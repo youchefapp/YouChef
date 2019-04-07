@@ -10,6 +10,6 @@
 
 <ion-content *ngIf="receta">
 
-<p>{{receta.steps}}</p>
+<p *ngFor="let step of receta.steps">{{step}}</p>
 
 </ion-content>
