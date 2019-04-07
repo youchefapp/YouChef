@@ -1,5 +1,6 @@
 import { RecetasService } from '../../providers/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
+import { Router } from "@angular/router";
 import {
   LoadingController,
   IonInfiniteScroll,
@@ -30,7 +31,8 @@ export class RecetasPage {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   constructor(private recetasService: RecetasService, public loadingController: LoadingController,
-    private menu: MenuController, public toastController: ToastController) {
+    private menu: MenuController, public toastController: ToastController,
+    private router: Router) {
     this.offset = 0;
     this.searchVal = "";
     this.cocina = [];
@@ -87,10 +89,10 @@ export class RecetasPage {
     if (this.isAnyFilterActivated()) {
       this.offset = LIMIT;
       this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal,
-                                                              this.cocina,
-                                                              this.dificultad,
-                                                              this.dieta,
-                                                              this.alergenos);
+        this.cocina,
+        this.dificultad,
+        this.dieta,
+        this.alergenos);
       this.recetas = this.filteredRecetas;
 
       if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
@@ -113,10 +115,10 @@ export class RecetasPage {
 
   private isAnyFilterActivated(): boolean {
     return this.cocina.length != 0
-           || this.dificultad.length != 0
-           || this.dieta.length != 0
-           || this.alergenos.length != 0
-           || this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4;
+      || this.dificultad.length != 0
+      || this.dieta.length != 0
+      || this.alergenos.length != 0
+      || this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4;
   }
 
   async presentLoading() {
@@ -147,6 +149,18 @@ export class RecetasPage {
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
+  }
+
+  goToReceta(receta) {
+    this.recetasService.selectedReceta = receta;
+    this.router.navigate(['/receta/']).then((e) => {
+      if (e) {
+        console.log("Navigation is successful!");
+      } else {
+        console.log("Navigation has failed!");
+      }
+    });
+
   }
 
 }

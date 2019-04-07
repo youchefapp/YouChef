@@ -13,6 +13,7 @@ import { Storage } from '@ionic/storage';
 export class RecetasService {
   database: SQLiteObject;
   private recetas: any[];
+  private _selectedReceta: any;
   private databaseReady: BehaviorSubject<boolean>;
 
   constructor(public sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform, private http: Http) {
@@ -76,6 +77,28 @@ export class RecetasService {
     });
   }
 
+  getRecipe(id) {
+    return this.database.executeSql("SELECT * FROM recipe WHERE recipe.id = ?", [id]).then((data) => {
+      let receta = null;
+      if (data.rows.length > 0) {
+          receta = data.rows.item(0);
+
+          this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
+            let tags = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              tags.push(data.rows.item(i).tag);
+            }
+            receta.tags = tags;
+          });
+      }
+
+      return receta;
+    }, err => {
+      console.log('Error: ', err);
+      return [];
+    });
+  }
+
   searchRecipe(name, cocina, dificultad, dieta, alergenos) {
     return this.recetas.filter(receta => {
       return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1
@@ -104,6 +127,14 @@ export class RecetasService {
 
   private containsAllElems(arr, target) {
     return target.every(v => arr.includes(v));
+  }
+
+  get selectedReceta() {
+    return this._selectedReceta;
+  }
+
+  set selectedReceta(receta) {
+    this._selectedReceta = receta;
   }
 
   getNumberOfRecipes() {
