@@ -1,7 +1,11 @@
 import { RecetasService } from '../../providers/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
-import { IonInfiniteScroll } from '@ionic/angular';
+import {
+  LoadingController,
+  IonInfiniteScroll,
+  MenuController,
+  ToastController
+} from '@ionic/angular';
 
 const LIMIT = 5;
 
@@ -14,14 +18,25 @@ export class RecetasPage {
   recetas: any[];
   private allRecetas: any[];
   private filteredRecetas: any[];
-  private offset: number;
+  offset: number;
   private numRecetas: number;
   private loading: HTMLIonLoadingElement;
+  private searchVal: string;
+  cocina: string[];
+  dificultad: string[];
+  dieta: string[];
+  alergenos: string[];
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-  constructor(private recetasService: RecetasService, public loadingController: LoadingController) {
+  constructor(private recetasService: RecetasService, public loadingController: LoadingController,
+    private menu: MenuController, public toastController: ToastController) {
     this.offset = 0;
+    this.searchVal = "";
+    this.cocina = [];
+    this.dificultad = [];
+    this.dieta = [];
+    this.alergenos = [];
   }
 
   ngOnInit(): void {
@@ -64,13 +79,28 @@ export class RecetasPage {
   }
 
   search(event) {
-    let val = event.target.value;
+    this.searchVal = event.target.value;
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '' && val.length > 4) {
+    if (this.searchVal && this.searchVal.trim() != '' && this.searchVal.length > 4) {
       this.offset = LIMIT;
-      this.filteredRecetas = this.recetasService.searchRecipe(val);
+      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, this.cocina, this.dificultad);
       this.recetas = this.filteredRecetas;
+
+      if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
+    }
+    else {
+      this.recetas = this.allRecetas;
+    }
+  }
+
+  filter() {
+    if (this.cocina.length != 0 || this.dificultad.length != 0 || this.searchVal != "") {
+      this.offset = LIMIT;
+      this.filteredRecetas = this.recetasService.searchRecipe(this.searchVal, this.cocina, this.dificultad);
+      this.recetas = this.filteredRecetas;
+
+      if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
     }
     else {
       this.recetas = this.allRecetas;
@@ -83,6 +113,28 @@ export class RecetasPage {
       duration: 10000
     });
     await this.loading.present();
+  }
+
+  async presentToast(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 
 }

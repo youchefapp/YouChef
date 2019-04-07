@@ -76,10 +76,20 @@ export class RecetasService {
     });
   }
 
-  searchRecipe(name) {
+  searchRecipe(name, cocina, dificultad) {
     return this.recetas.filter(receta => {
-      return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1;
+      return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1
+             && this.filterCocina(receta, cocina)
+             && this.filterDificultad(receta, dificultad);
     });
+  }
+
+  private filterCocina(receta, cocina): boolean {
+    return cocina.length != 0 ? cocina.indexOf(receta.cuisine) > -1 : true;
+  }
+
+  private filterDificultad(receta, dificultad): boolean {
+    return dificultad.length != 0? dificultad.indexOf(receta.difficulty) > -1 : true;
   }
 
   getNumberOfRecipes() {
