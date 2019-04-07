@@ -12,14 +12,16 @@ const LIMIT = 5;
 })
 export class RecetasPage {
   recetas: any[];
-  private loadedRecetas: number;
+  private allRecetas: any[];
+  private filteredRecetas: any[];
+  private offset: number;
   private numRecetas: number;
   private loading: HTMLIonLoadingElement;
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-  constructor(private recetasService: RecetasService, public loadingController: LoadingController) { 
-    this.loadedRecetas = 0;
+  constructor(private recetasService: RecetasService, public loadingController: LoadingController) {
+    this.offset = 0;
   }
 
   ngOnInit(): void {
@@ -32,9 +34,10 @@ export class RecetasPage {
           console.log("Total recetas: " + this.numRecetas);
         });
 
-        this.recetasService.getRecipes(LIMIT ,this.loadedRecetas).then(data => {
-          this.recetas = data;
-          this.loadedRecetas = this.recetas.length;
+        this.recetasService.getRecipes().then(data => {
+          this.allRecetas = data;
+          this.recetas = this.allRecetas;
+          this.offset += LIMIT;
           this.loading.dismiss();
         });
       }
@@ -46,17 +49,14 @@ export class RecetasPage {
       console.log('Done');
       event.target.complete();
 
-      this.recetasService.getRecipes(LIMIT, this.loadedRecetas).then(data => {
-        this.recetas = data;
-        this.loadedRecetas += this.recetas.length;
-      });
+      this.offset += LIMIT;
 
-      console.log("loadedRecetas: " + this.loadedRecetas);
+      console.log("offset: " + this.offset);
       console.log("recetasLenght: " + this.recetas.length);
 
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
-      if (this.loadedRecetas >= this.numRecetas) {
+      if (this.offset >= this.numRecetas) {
         event.target.disabled = true;
         console.log("Ya no hay más recetas");
       }
@@ -64,12 +64,17 @@ export class RecetasPage {
   }
 
   search(event) {
-      this.recetas = [];
-      this.loadedRecetas = 0;
-      
-      this.recetasService.searchRecipe(event.target.value).then((data) => {
-        this.recetas = data;
-      })    
+    let val = event.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '' && val.length > 4) {
+      this.offset = LIMIT;
+      this.filteredRecetas = this.recetasService.searchRecipe(val);
+      this.recetas = this.filteredRecetas;
+    }
+    else {
+      this.recetas = this.allRecetas;
+    }
   }
 
   async presentLoading() {

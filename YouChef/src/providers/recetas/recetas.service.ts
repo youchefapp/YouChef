@@ -50,8 +50,8 @@ export class RecetasService {
       });
   }
 
-  getRecipes(limit, offset) {
-    return this.database.executeSql("SELECT * FROM recipe LIMIT ? OFFSET ?", [limit, offset]).then((data) => {
+  getRecipes() {
+    return this.database.executeSql("SELECT * FROM recipe", []).then((data) => {
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
           let receta = data.rows.item(i);
@@ -77,19 +77,13 @@ export class RecetasService {
   }
 
   searchRecipe(name) {
-
-    return this.database.executeSql("SELECT * FROM recipe AS r WHERE r.name LIKE '%" + name + "%'", []).then((data) => {
-      let recipes = [];
-      for (let i = 0; i < data.rows.length; i++) {
-        recipes.push(data.rows.item(i));
-      }
-
-      return recipes;
-    })
+    return this.recetas.filter(receta => {
+      return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1;
+    });
   }
 
   getNumberOfRecipes() {
-    return this.database.executeSql("SELECT COALESCE(MAX(id)+1, 0) AS numRecipes FROM recipe", []);
+    return this.database.executeSql("SELECT COALESCE(MAX(id), 0) AS numRecipes FROM recipe", []);
   }
 
   getDatabaseState() {
