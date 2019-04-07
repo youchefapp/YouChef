@@ -83,6 +83,8 @@ export class RecetasService {
       if (data.rows.length > 0) {
           receta = data.rows.item(0);
 
+          receta.steps = JSON.parse(receta.steps);
+
           this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
             let tags = [];
             for (let i = 0; i < data.rows.length; i++) {

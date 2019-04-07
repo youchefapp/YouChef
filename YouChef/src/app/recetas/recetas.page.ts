@@ -21,7 +21,6 @@ export class RecetasPage {
   private filteredRecetas: any[];
   offset: number;
   private numRecetas: number;
-  private loading: HTMLIonLoadingElement;
   private searchVal: string;
   cocina: string[];
   dificultad: string[];
@@ -55,7 +54,7 @@ export class RecetasPage {
           this.allRecetas = data;
           this.recetas = this.allRecetas;
           this.offset += LIMIT;
-          this.loading.dismiss();
+          this.loadingController.dismiss();
         });
       }
     })
@@ -122,11 +121,11 @@ export class RecetasPage {
   }
 
   async presentLoading() {
-    this.loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({
       message: 'Cargando recetas...',
       duration: 10000
     });
-    await this.loading.present();
+    await loading.present();
   }
 
   async presentToast(mensaje: string) {

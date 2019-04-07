@@ -12,6 +12,10 @@ export class RecetaPage implements OnInit {
   constructor(private recetasService: RecetasService) { }
 
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter() {
     this.receta = this.recetasService.selectedReceta;
   }
 
