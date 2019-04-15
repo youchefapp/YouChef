@@ -112,7 +112,9 @@
                     <p>
                         <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{r.rations}}</p>
                     <p>
-                        <ion-icon name="pizza"></ion-icon><strong> Calorías: </strong>{{r.calories}} kcal</p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías por ración: </strong>{{round(r.calories / r.rations)}} kcal</p>
+                    <p>
+                        <ion-icon name="link"></ion-icon><strong> Autoría: </strong>{{r.attribution}}</p>
         </ion-card-content>
     </ion-card>
 

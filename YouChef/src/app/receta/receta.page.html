@@ -30,7 +30,7 @@
                     <p>
                         <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{receta.rations}}</p>
                     <p>
-                        <ion-icon name="pizza"></ion-icon><strong> Calorías: </strong>{{receta.calories}} kcal</p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías por ración: </strong>{{round(receta.calories / receta.rations)}} kcal</p>
 
                     <p>
                         <ion-icon name="link"></ion-icon><strong> Autoría: </strong>{{receta.attribution}}</p>
@@ -70,6 +70,38 @@
             </ion-list>
         </ion-card-content>
     </ion-card>
+
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>Análisis nutricional por ración</ion-card-subtitle>
+                <ion-card-title>Nutrientes</ion-card-title>
+            </ion-card-header>
+
+            <ion-grid>
+                <span *ngFor="let index of receta.nutrients; let i = index; let even = even">
+                    <ion-row *ngIf="even">
+                        <ion-col>
+                            <p><strong>{{receta.nutrients[i].name}}</strong> {{round(receta.nutrients[i].cuantity / receta.rations)}}
+                                {{receta.nutrients[i].unit}}
+                            </p>
+                            <p>{{round(receta.nutrients[i].daily_percentage / receta.rations)}}%</p>
+                        </ion-col>
+                        <ion-col>
+                            <p><strong>{{receta.nutrients[i + 1].name}}</strong> {{round(receta.nutrients[i + 1].cuantity / receta.rations)}}
+                                    {{receta.nutrients[i + 1].unit}}</p>
+                            <p>{{round(receta.nutrients[i + 1].daily_percentage / receta.rations)}}%</p>
+                        </ion-col>
+                    </ion-row>
+                </span>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <div class="ion-margin-vertical">
+        <img src="assets/img/edamam.png" class="displayed" height="40" width="200" alt="Powered by Edamam">
+    </div>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="danger">

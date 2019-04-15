@@ -25,4 +25,8 @@ export class RecetaPage implements OnInit {
     browser.show();
   }
 
+  round(n:number) {
+    return Math.round(n * 100) / 100;
+  }
+
 }

@@ -87,6 +87,19 @@ export class RecetasService {
             receta.ingredients = ingredients;
           });
 
+          this.database.executeSql("SELECT nutrient, cuantity, daily_percentage, unit FROM nutrient INNER JOIN recipe_nutrient ON nutrient.id = recipe_nutrient.nutrient_id WHERE recipe_nutrient.recipe_id = ?", [receta.id]).then((data) => {
+            let nutrients = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let nutrient:any = {};
+              nutrient.name = data.rows.item(i).nutrient;
+              nutrient.cuantity = data.rows.item(i).cuantity;
+              nutrient.daily_percentage = data.rows.item(i).daily_percentage;
+              nutrient.unit = data.rows.item(i).unit;
+              nutrients.push(nutrient);
+            }
+            receta.nutrients = nutrients;
+          });
+
           this.recetas.push(receta);
         }
         console.log("Number of recipes on database = " + this.recetas.length);
