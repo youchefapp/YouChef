@@ -31,6 +31,11 @@
                         <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{receta.rations}}</p>
                     <p>
                         <ion-icon name="pizza"></ion-icon><strong> Calorías: </strong>{{receta.calories}} kcal</p>
+
+                    <p>
+                        <ion-icon name="pizza"></ion-icon><strong> Autoría: </strong>{{receta.attribution}}</p>
+
+                    <ion-button (click)="visitAuthor()" size="small">Ver en {{receta.attribution}}</ion-button>
         </ion-card-content>
     </ion-card>
 

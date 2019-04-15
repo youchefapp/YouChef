@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
@@ -32,6 +34,7 @@ import { RecetasService } from './../providers/recetas/recetas.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLitePorter,
     SQLite,
+    InAppBrowser
   ],
   bootstrap: [AppComponent]
 })
