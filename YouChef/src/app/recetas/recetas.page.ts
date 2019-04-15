@@ -150,6 +150,10 @@ export class RecetasPage {
     this.menu.open('custom');
   }
 
+  closeMenu() {
+    this.menu.close();
+  }
+
   goToReceta(receta) {
     this.recetasService.selectedReceta = receta;
     this.router.navigate(['/receta/']).then((e) => {

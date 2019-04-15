@@ -76,6 +76,17 @@ export class RecetasService {
             receta.tags = tags;
           });
 
+          this.database.executeSql("SELECT name, weight FROM ingredient INNER JOIN recipe_ingredient ON ingredient.id = recipe_ingredient.ingredient_id WHERE recipe_ingredient.recipe_id = ?", [receta.id]).then((data) => {
+            let ingredients = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let ingredient:any = {};
+              ingredient.name = data.rows.item(i).name;
+              ingredient.weight = data.rows.item(i).weight;
+              ingredients.push(ingredient);
+            }
+            receta.ingredients = ingredients;
+          });
+
           this.recetas.push(receta);
         }
         console.log("Number of recipes on database = " + this.recetas.length);

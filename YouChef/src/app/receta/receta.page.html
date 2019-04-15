@@ -1,15 +1,75 @@
 <ion-header>
-  <ion-toolbar>
-  <ion-buttons slot="start">
-      <!-- Workaround because router history always goes back to root tab-->
-      <ion-back-button defaultHref="" routerLink="/tabs/recetas"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ receta ? receta.name: 'Cargando...' }}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!-- Workaround because router history always goes back to root tab-->
+            <ion-back-button defaultHref="" routerLink="/tabs/recetas"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ receta ? receta.name: 'Cargando...' }}</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="receta">
 
-<p *ngFor="let step of receta.steps">{{step}}</p>
+    <ion-card mode="ios">
+        <img src="assets/img/recetas/{{receta.id}}.jpg" alt="">
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-icon name="restaurant"></ion-icon>
+                {{receta.cuisine}}
+            </ion-card-subtitle>
+            <ion-card-title>{{receta.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ng-container *ngFor="let t of receta.tags; let i = index">{{t}}{{i
+                < receta.tags.length - 1 ? ', ' : ''}}</ng-container>
+                    <p>
+                        <ion-icon name="thumbs-up"></ion-icon><strong> Dificultad: </strong>{{receta.difficulty}}</p>
+                    <p>
+                        <ion-icon name="stopwatch"></ion-icon><strong> Duración: </strong>{{receta.duration}}</p>
+                    <p>
+                        <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{receta.rations}}</p>
+                    <p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías: </strong>{{receta.calories}} kcal</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>{{receta.ingredients.length}} ingredientes</ion-card-subtitle>
+                <ion-card-title>Ingredientes</ion-card-title>
+            </ion-card-header>
+            <ion-list>
+                <ion-item *ngFor="let ingredient of receta.ingredients">
+                    <p>{{ingredient.name}}</p>
+                    <ion-note slot="end">{{ingredient.weight}}g</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>Tiempo de preparación: {{receta.duration}}</ion-card-subtitle>
+                <ion-card-title>Pasos para cocinar la receta</ion-card-title>
+            </ion-card-header>
+            <ion-list>
+                <ion-item *ngFor="let step of receta.steps">
+                    <ion-thumbnail slot="start">
+                        <ion-icon name="restaurant"></ion-icon>
+                    </ion-thumbnail>
+                    <p>{{step}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="danger">
+            <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 
 </ion-content>
