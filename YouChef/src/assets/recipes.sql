@@ -2884,16 +2884,16 @@ CREATE TABLE IF NOT EXISTS `nutrient` (
 	`nutrient`	VARCHAR ( 255 ) NOT NULL,
 	PRIMARY KEY(`id`)
 );
-INSERT INTO `nutrient` (id,nutrient) VALUES (1,'Calcium');
-INSERT INTO `nutrient` (id,nutrient) VALUES (2,'Carbs');
-INSERT INTO `nutrient` (id,nutrient) VALUES (3,'Cholesterol');
-INSERT INTO `nutrient` (id,nutrient) VALUES (4,'Fat');
-INSERT INTO `nutrient` (id,nutrient) VALUES (5,'Iron');
-INSERT INTO `nutrient` (id,nutrient) VALUES (6,'Fiber');
-INSERT INTO `nutrient` (id,nutrient) VALUES (7,'Potassium');
-INSERT INTO `nutrient` (id,nutrient) VALUES (8,'Magnesium');
-INSERT INTO `nutrient` (id,nutrient) VALUES (9,'Sodium');
-INSERT INTO `nutrient` (id,nutrient) VALUES (10,'Vitamin B6');
+INSERT INTO `nutrient` (id,nutrient) VALUES (1,'Calcio');
+INSERT INTO `nutrient` (id,nutrient) VALUES (2,'Carbohidratos');
+INSERT INTO `nutrient` (id,nutrient) VALUES (3,'Colesterol');
+INSERT INTO `nutrient` (id,nutrient) VALUES (4,'Grasa');
+INSERT INTO `nutrient` (id,nutrient) VALUES (5,'Hierro');
+INSERT INTO `nutrient` (id,nutrient) VALUES (6,'Fibra');
+INSERT INTO `nutrient` (id,nutrient) VALUES (7,'Potasio');
+INSERT INTO `nutrient` (id,nutrient) VALUES (8,'Magnesio');
+INSERT INTO `nutrient` (id,nutrient) VALUES (9,'Sodio');
+INSERT INTO `nutrient` (id,nutrient) VALUES (10,'Vitamina B6');
 CREATE TABLE IF NOT EXISTS `ingredient` (
 	`id`	INTEGER NOT NULL,
 	`name`	VARCHAR ( 255 ) NOT NULL,
