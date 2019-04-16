@@ -1,4 +1,4 @@
-import { RecetasService } from '../../providers/recetas/recetas.service';
+import { RecetasService, Recipe } from '../../providers/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import {
@@ -7,6 +7,7 @@ import {
   MenuController,
   ToastController
 } from '@ionic/angular';
+import { Observable } from 'rxjs';
 
 const LIMIT = 5;
 
@@ -16,9 +17,9 @@ const LIMIT = 5;
   styleUrls: ['recetas.page.scss']
 })
 export class RecetasPage {
-  recetas: any[];
-  private allRecetas: any[];
-  private filteredRecetas: any[];
+  recetas: Observable<Recipe[]>;
+  private allRecetas: Observable<Recipe[]>;
+  private filteredRecetas: Observable<Recipe[]>;
   offset: number;
   private numRecetas: number;
   private searchVal: string;
@@ -41,23 +42,12 @@ export class RecetasPage {
   }
 
   ngOnInit(): void {
-    this.presentLoading();
-
-    this.recetasService.getDatabaseState().subscribe(rdy => {
-      if (rdy) {
-        this.recetasService.getNumberOfRecipes().then((data) => {
-          this.numRecetas = data.rows.item(0).numRecipes;
-          console.log("Total recetas: " + this.numRecetas);
-        });
-
-        this.recetasService.getRecipes().then(data => {
-          this.allRecetas = data;
-          this.recetas = this.allRecetas;
-          this.offset += LIMIT;
-          this.loadingController.dismiss();
-        });
-      }
-    })
+    // this.presentLoading();
+    this.numRecetas = 10;
+  
+    this.allRecetas = this.recetasService.getRecipes();
+    this.recetas = this.recetasService.getRecipes();
+    this.offset += LIMIT;
   }
 
   loadData(event) {
@@ -66,10 +56,10 @@ export class RecetasPage {
       event.target.complete();
 
       this.offset += LIMIT;
-
+/*
       console.log("offset: " + this.offset);
       console.log("recetasLenght: " + this.recetas.length);
-
+*/
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
       if (this.offset >= this.numRecetas) {
@@ -94,7 +84,7 @@ export class RecetasPage {
         this.alergenos);
       this.recetas = this.filteredRecetas;
 
-      if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
+     /* if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");*/
     }
     else {
       this.recetas = this.allRecetas;
@@ -152,18 +142,6 @@ export class RecetasPage {
 
   closeMenu() {
     this.menu.close();
-  }
-
-  goToReceta(receta) {
-    this.recetasService.selectedReceta = receta;
-    this.router.navigate(['/receta/']).then((e) => {
-      if (e) {
-        console.log("Navigation is successful!");
-      } else {
-        console.log("Navigation has failed!");
-      }
-    });
-
   }
 
   round(n:number) {

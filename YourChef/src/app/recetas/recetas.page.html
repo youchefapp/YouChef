@@ -92,8 +92,8 @@
 
     <ion-searchbar (ionInput)="search($event)" placeholder="Buscar receta" debounce="700"></ion-searchbar>
 
-    <ion-card (click)="goToReceta(r)" *ngFor="let r of recetas | slice:0:offset" mode="ios">
-        <img src="assets/img/recetas/{{r.id}}.jpg" alt="">
+    <ion-card [routerLink]="['/receta', r.id]" *ngFor="let r of (recetas | async) | slice:0:offset" mode="ios">
+        <img src="{{r.img}}" alt="">
         <ion-card-header>
             <ion-card-subtitle>
                 <ion-icon name="restaurant"></ion-icon>

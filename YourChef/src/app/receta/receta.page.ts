@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecetasService } from 'src/providers/recetas/recetas.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RecetasService, Recipe } from 'src/providers/recetas/recetas.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
@@ -8,16 +9,21 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./receta.page.scss'],
 })
 export class RecetaPage implements OnInit {
-  receta: any;
+  receta: Recipe;
 
-  constructor(private recetasService: RecetasService, private iab: InAppBrowser) { }
+  constructor(private activatedRoute: ActivatedRoute, private recetasService: RecetasService, private iab: InAppBrowser) { }
 
   ngOnInit() {
     
   }
 
   ionViewWillEnter() {
-    this.receta = this.recetasService.selectedReceta;
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.recetasService.getRecipe(id).subscribe(recipe => {
+        this.receta = recipe;
+      });
+    }
   }
 
   visitAuthor() {
