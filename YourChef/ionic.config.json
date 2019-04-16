@@ -1,7 +1,7 @@
 {
-  "name": "YouChef",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
+    "name": "yourchef",
+    "integrations": {
+        "cordova": {}
+    },
+    "type": "angular"
 }
