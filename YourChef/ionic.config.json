@@ -1,0 +1,7 @@
+{
+  "name": "YouChef",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

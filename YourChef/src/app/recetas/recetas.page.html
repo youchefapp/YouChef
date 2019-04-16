@@ -1,0 +1,126 @@
+<ion-menu side="start" menuId="first">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-buttons slot="end">
+                <ion-button (click)="clearFilters()" color="light">Limpiar filtros</ion-button>
+            </ion-buttons>
+            <ion-title>Filtrar</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                <ion-label>Cocina</ion-label>
+                <ion-select [(ngModel)]="cocina" (ngModelChange)="filter()" multiple="true" cancelText="Cancelar" okText="Aceptar" placeholder="Tipo">
+                    <ion-select-option value="Española">Española</ion-select-option>
+                    <ion-select-option value="Griega">Griega</ion-select-option>
+                    <ion-select-option value="Italiana">Italiana</ion-select-option>
+                    <ion-select-option value="Mediterranea">Mediterránea</ion-select-option>
+                    <ion-select-option value="Alemana">Alemana</ion-select-option>
+                    <ion-select-option value="Mexican">Mejicana</ion-select-option>
+                    <ion-select-option value="India">India</ion-select-option>
+                    <ion-select-option value="Inglesa">Inglesa</ion-select-option>
+                    <ion-select-option value="Asiatica">Asiática</ion-select-option>
+                    <ion-select-option value="Tailandesa">Tailandesa</ion-select-option>
+                    <ion-select-option value="China">China</ion-select-option>
+                    <ion-select-option value="USA">USA</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Dificultad</ion-label>
+                <ion-select [(ngModel)]="dificultad" (ngModelChange)="filter()" multiple="true" cancelText="Cancelar" okText="Aceptar" placeholder="¿Fácil?">
+                    <ion-select-option value="Fácil">Fácil</ion-select-option>
+                    <ion-select-option value="Medio">Medio</ion-select-option>
+                    <ion-select-option value="Difícil">Difícil</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Dieta</ion-label>
+                <ion-select [(ngModel)]="dieta" (ngModelChange)="filter()" multiple="true" cancelText="Cancelar" okText="Aceptar" placeholder="¿Equilibrada?">
+                    <ion-select-option value="Bajo en carbohidratos">Bajo en carbohidratos</ion-select-option>
+                    <ion-select-option value="Bajo en sodio">Bajo en sodio</ion-select-option>
+                    <ion-select-option value="Mucha fibra">Mucha fibra</ion-select-option>
+                    <ion-select-option value="Alto valor protéico">Alto valor protéico</ion-select-option>
+                    <ion-select-option value="Bajo en grasas">Bajo en grasas</ion-select-option>
+                    <ion-select-option value="Poca grasa">Poca grasa</ion-select-option>
+                    <ion-select-option value="Equilibrada">Equilibrada</ion-select-option>
+                    <ion-select-option value="Vegetariano">Vegetariano</ion-select-option>
+                    <ion-select-option value="Paleo">Paleo</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Alérgenos</ion-label>
+                <ion-select [(ngModel)]="alergenos" (ngModelChange)="filter()" multiple="true" cancelText="Cancelar" okText="Aceptar" placeholder="¿Sin gluten?">
+                    <ion-select-option value="Sin gluten">Sin gluten</ion-select-option>
+                    <ion-select-option value="Sin huevo">Sin huevo</ion-select-option>
+                    <ion-select-option value="Sin lácteos">Sin lácteos</ion-select-option>
+                    <ion-select-option value="Sin azúcar">Sin azúcar</ion-select-option>
+                    <ion-select-option value="Sin soja">Sin soja</ion-select-option>
+                    <ion-select-option value="Sin frutos secos">Sin frutos secos</ion-select-option>
+                    <ion-select-option value="Libre de nueces y de cacahuetes">Libre de nueces y de cacahuetes</ion-select-option>
+                    <ion-select-option value="Sin pescado">Sin pescado</ion-select-option>
+                    <ion-select-option value="Sin mariscos">Sin mariscos</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        
+    </ion-content>
+
+    <ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="closeMenu()" expand="full">Filtrar</ion-button>
+  </ion-toolbar>
+</ion-footer>
+</ion-menu>
+
+<ion-router-outlet main></ion-router-outlet>
+
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Recetas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar (ionInput)="search($event)" placeholder="Buscar receta" debounce="700"></ion-searchbar>
+
+    <ion-card (click)="goToReceta(r)" *ngFor="let r of recetas | slice:0:offset" mode="ios">
+        <img src="assets/img/recetas/{{r.id}}.jpg" alt="">
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-icon name="restaurant"></ion-icon>
+                {{r.cuisine}}
+            </ion-card-subtitle>
+            <ion-card-title>{{r.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ng-container *ngFor="let t of r.tags; let i = index">{{t}}{{i
+                < r.tags.length - 1 ? ', ' : ''}}</ng-container>
+                    <p>
+                        <ion-icon name="thumbs-up"></ion-icon><strong> Dificultad: </strong>{{r.difficulty}}</p>
+                    <p>
+                        <ion-icon name="stopwatch"></ion-icon><strong> Duración: </strong>{{r.duration}}</p>
+                    <p>
+                        <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{r.rations}}</p>
+                    <p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías por ración: </strong>{{round(r.calories / r.rations)}} kcal</p>
+                    <p>
+                        <ion-icon name="link"></ion-icon><strong> Autoría: </strong>{{r.attribution}}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más recetas...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+</ion-content>

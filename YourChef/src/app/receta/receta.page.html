@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <!-- Workaround because router history always goes back to root tab-->
+            <ion-back-button defaultHref="" routerLink="/tabs/recetas"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ receta ? receta.name: 'Cargando...' }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="receta">
+
+    <ion-card mode="ios">
+        <img src="assets/img/recetas/{{receta.id}}.jpg" alt="">
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-icon name="restaurant"></ion-icon>
+                {{receta.cuisine}}
+            </ion-card-subtitle>
+            <ion-card-title>{{receta.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ng-container *ngFor="let t of receta.tags; let i = index">{{t}}{{i
+                < receta.tags.length - 1 ? ', ' : ''}}</ng-container>
+                    <p>
+                        <ion-icon name="thumbs-up"></ion-icon><strong> Dificultad: </strong>{{receta.difficulty}}</p>
+                    <p>
+                        <ion-icon name="stopwatch"></ion-icon><strong> Duración: </strong>{{receta.duration}}</p>
+                    <p>
+                        <ion-icon name="people"></ion-icon><strong> Raciones: </strong>{{receta.rations}}</p>
+                    <p>
+                        <ion-icon name="pizza"></ion-icon><strong> Calorías por ración: </strong>{{round(receta.calories / receta.rations)}} kcal</p>
+
+                    <p>
+                        <ion-icon name="link"></ion-icon><strong> Autoría: </strong>{{receta.attribution}}</p>
+
+                    <ion-button (click)="visitAuthor()" size="small">Ver en {{receta.attribution}}</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>{{receta.ingredients.length}} ingredientes</ion-card-subtitle>
+                <ion-card-title>Ingredientes</ion-card-title>
+            </ion-card-header>
+            <ion-list>
+                <ion-item *ngFor="let ingredient of receta.ingredients">
+                    <p>{{ingredient.name}}</p>
+                    <ion-note slot="end">{{ingredient.weight}}g</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>Tiempo de preparación: {{receta.duration}}</ion-card-subtitle>
+                <ion-card-title>Pasos para cocinar la receta</ion-card-title>
+            </ion-card-header>
+            <ion-list>
+                <ion-item *ngFor="let step of receta.steps">
+                    <ion-thumbnail slot="start">
+                        <ion-icon name="restaurant"></ion-icon>
+                    </ion-thumbnail>
+                    <p>{{step}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+
+    <ion-card mode="ios">
+        <ion-card-content>
+            <ion-card-header>
+                <ion-card-subtitle>Análisis nutricional por ración</ion-card-subtitle>
+                <ion-card-title>Nutrientes</ion-card-title>
+            </ion-card-header>
+
+            <ion-grid>
+                <span *ngFor="let index of receta.nutrients; let i = index; let even = even">
+                    <ion-row *ngIf="even">
+                        <ion-col>
+                            <p><strong>{{receta.nutrients[i].name}}</strong> {{round(receta.nutrients[i].cuantity / receta.rations)}}
+                                {{receta.nutrients[i].unit}}
+                            </p>
+                            <p>{{round(receta.nutrients[i].daily_percentage / receta.rations)}}%</p>
+                        </ion-col>
+                        <ion-col>
+                            <p><strong>{{receta.nutrients[i + 1].name}}</strong> {{round(receta.nutrients[i + 1].cuantity / receta.rations)}}
+                                    {{receta.nutrients[i + 1].unit}}</p>
+                            <p>{{round(receta.nutrients[i + 1].daily_percentage / receta.rations)}}%</p>
+                        </ion-col>
+                    </ion-row>
+                </span>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <div class="ion-margin-vertical">
+        <img src="assets/img/edamam.png" class="displayed" height="40" width="200" alt="Powered by Edamam">
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="danger">
+            <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
