@@ -1,0 +1,5 @@
+<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+    <application android:usesCleartextTraffic="true" />
+</edit-config>
+
+# https://github.com/ionic-team/ionic-cli/issues/3759
