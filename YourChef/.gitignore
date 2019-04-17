@@ -32,7 +32,3 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-
-# Secret API keys Firebase
-**/src/environments/environment.prod.ts
-**/src/environments/environment.ts

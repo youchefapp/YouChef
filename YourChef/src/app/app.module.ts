@@ -17,33 +17,25 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
-
 import { RecetasService } from './../providers/recetas/recetas.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,
+  imports: [BrowserModule, 
     IonicModule.forRoot(),
     HttpModule,
     IonicStorageModule.forRoot(),
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule],
+    AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
     RecetasService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    /* Because of a recent update to the Firebase SDK we can also add the provide block at the end to prevent an error message in our log. */
-    { provide: FirestoreSettingsToken, useValue: {} },
     SQLitePorter,
     SQLite,
     InAppBrowser
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
