@@ -79,7 +79,7 @@ export class RecetasService {
           this.database.executeSql("SELECT name, weight FROM ingredient INNER JOIN recipe_ingredient ON ingredient.id = recipe_ingredient.ingredient_id WHERE recipe_ingredient.recipe_id = ?", [receta.id]).then((data) => {
             let ingredients = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let ingredient:any = {};
+              let ingredient: any = {};
               ingredient.name = data.rows.item(i).name;
               ingredient.weight = data.rows.item(i).weight;
               ingredients.push(ingredient);
@@ -90,7 +90,7 @@ export class RecetasService {
           this.database.executeSql("SELECT nutrient, cuantity, daily_percentage, unit FROM nutrient INNER JOIN recipe_nutrient ON nutrient.id = recipe_nutrient.nutrient_id WHERE recipe_nutrient.recipe_id = ?", [receta.id]).then((data) => {
             let nutrients = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let nutrient:any = {};
+              let nutrient: any = {};
               nutrient.name = data.rows.item(i).nutrient;
               nutrient.cuantity = data.rows.item(i).cuantity;
               nutrient.daily_percentage = data.rows.item(i).daily_percentage;

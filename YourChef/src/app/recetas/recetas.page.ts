@@ -1,4 +1,4 @@
-import { RecetasService } from '../../providers/recetas/recetas.service';
+import { RecetasService } from '../services/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import {
