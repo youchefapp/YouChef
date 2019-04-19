@@ -3,9 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
 
-/*
- * En caso de que se prefiere usar AngularFire
-
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -13,7 +10,13 @@ import {
   DocumentReference,
   QueryDocumentSnapshot
 } from '@angular/fire/firestore';
-*/
+
+
+export interface User {
+  name: string;
+  email: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +24,14 @@ import {
 export class AuthService {
 
   private user: firebase.User;
+  private userCollection: AngularFirestoreCollection<User>;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
     afAuth.auth.onAuthStateChanged(user => {
       this.user = user;
     });
+
+    this.userCollection = this.afs.collection('users');
   }
 
   signInWithEmail(credentials) {
@@ -54,8 +60,8 @@ export class AuthService {
       });
   }
 
-  getEmail() {
-    return this.user && this.user.email;
+  getUser() {
+    return this.userCollection.doc<User>(this.user.uid).valueChanges();
   }
 
   signOut(): Promise<void> {

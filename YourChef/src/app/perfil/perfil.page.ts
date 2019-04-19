@@ -1,4 +1,4 @@
-import { AuthService } from './../services/auth.service';
+import { AuthService, User } from './../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,14 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['perfil.page.scss']
 })
 export class PerfilPage {
-  email: string;
+  user: User;
+  imageUrl: string = 'assets/img/profile_bg.jpg';
 
   constructor(public auth: AuthService, private router: Router) {
-    
   }
 
   ionViewWillEnter() {
-    this.email = this.auth.getEmail();
+    this.auth.getUser().subscribe((user) => {
+      this.user = user;
+    }, err => {
+      console.log("Couldn't retrieve user");
+    });
   }
 
   logout() {
