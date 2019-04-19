@@ -11,11 +11,11 @@ export class PerfilPage {
   email: string;
 
   constructor(public auth: AuthService, private router: Router) {
-    this.email = this.auth.getEmail();
+    
   }
 
   ionViewWillEnter() {
-
+    this.email = this.auth.getEmail();
   }
 
   logout() {

@@ -17,6 +17,11 @@ export class SignupPage implements OnInit {
   }
 
   register(form) {
+    if (form.value.password != form.value.confirm) {
+      this.presentToast('Las contraseñas no coinciden');
+      return false;
+    }
+
     this.auth.signUp(form.value).then(
       () => {
         console.log("Usuario creado");
