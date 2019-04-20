@@ -19,7 +19,7 @@
         <ion-row justify-content-center>
             <ion-col align-self-center>
                 <div class="ion-padding-top" text-center>
-                    <img src="assets/img/avatar.png" width="100" alt="">
+                    <img (click)="changeImgProfile()" [src]="profileImg" width="100" alt="">
                 </div>
             </ion-col>
         </ion-row>
@@ -35,45 +35,45 @@
         </ion-row>
     </ion-grid>
 
-     <!-- Icon top -->
-      <ion-segment [(ngModel)]="sections" color="tertiary">
+    <!-- Icon top -->
+    <ion-segment [(ngModel)]="sections" color="tertiary">
         <ion-segment-button value="favoritas" checked>
-          <ion-label>Favoritas</ion-label>
-          <ion-icon name="heart"></ion-icon>
+            <ion-label>Favoritas</ion-label>
+            <ion-icon name="heart"></ion-icon>
         </ion-segment-button>
         <ion-segment-button value="recomendaciones">
-          <ion-label>Recomendaciones</ion-label>
-          <ion-icon name="bulb"></ion-icon>
+            <ion-label>Recomendaciones</ion-label>
+            <ion-icon name="bulb"></ion-icon>
         </ion-segment-button>
         <ion-segment-button value="cocinadas">
-          <ion-label>Cocinadas</ion-label>
-          <ion-icon name="restaurant"></ion-icon>
+            <ion-label>Cocinadas</ion-label>
+            <ion-icon name="restaurant"></ion-icon>
         </ion-segment-button>
-      </ion-segment>
+    </ion-segment>
 
-<div [ngSwitch]="sections">
-    <!-- List of Sliding Items -->
-    <ion-list *ngSwitchCase="'favoritas'">
-        <ion-list-header>
-            <ion-label>Recetas favoritas</ion-label>
-        </ion-list-header>
-        <ion-item-sliding>
-            <ion-item>
-                <ion-label>Receta</ion-label>
-            </ion-item>
-            <ion-item-options side="end">
-                <ion-item-option>Eliminar</ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
+    <div [ngSwitch]="sections">
+        <!-- List of Sliding Items -->
+        <ion-list *ngSwitchCase="'favoritas'">
+            <ion-list-header>
+                <ion-label>Recetas favoritas</ion-label>
+            </ion-list-header>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-label>Receta</ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option>Eliminar</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
 
-        <ion-item-sliding>
-            <ion-item>
-                <ion-label>Receta</ion-label>
-            </ion-item>
-            <ion-item-options side="end">
-                <ion-item-option>Eliminar</ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-label>Receta</ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option>Eliminar</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
     </div>
 </ion-content>

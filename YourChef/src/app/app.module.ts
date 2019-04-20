@@ -25,7 +25,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RecetasService } from './services/recetas/recetas.service';
 
 import { AuthService } from './services/auth.service';
-
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,7 +49,9 @@ import { AuthService } from './services/auth.service';
     SQLitePorter,
     SQLite,
     InAppBrowser,
-    AuthService
+    AuthService,
+    WebView,
+    ImagePicker
   ],
   bootstrap: [AppComponent]
 })

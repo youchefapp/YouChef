@@ -2,6 +2,8 @@ import { AuthService, User } from './../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+const DEFAULT_AVATAR = 'assets/img/avatar.png';
+
 @Component({
   selector: 'app-perfil',
   templateUrl: 'perfil.page.html',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PerfilPage {
   user: User;
-  imageUrl: string = 'assets/img/profile_bg.jpg';
+  profileImg: string = DEFAULT_AVATAR;
   sections: string = "favoritas";
 
   constructor(public auth: AuthService, private router: Router) {
@@ -18,6 +20,8 @@ export class PerfilPage {
   ionViewWillEnter() {
     this.auth.getUser().subscribe((user) => {
       this.user = user;
+      if (this.user.photoURL) this.profileImg = this.user.photoURL;
+      else this.profileImg = DEFAULT_AVATAR;
     }, err => {
       console.log("Couldn't retrieve user");
     });
@@ -28,5 +32,9 @@ export class PerfilPage {
       console.log("Sesión cerrada");
       this.router.navigate(['/tabs/login']);
     });
+  }
+
+  changeImgProfile() {
+    this.auth.openImagePicker();
   }
 }
