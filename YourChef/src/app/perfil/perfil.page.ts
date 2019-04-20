@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class PerfilPage {
   user: User;
   imageUrl: string = 'assets/img/profile_bg.jpg';
+  sections: string = "favoritas";
 
   constructor(public auth: AuthService, private router: Router) {
   }

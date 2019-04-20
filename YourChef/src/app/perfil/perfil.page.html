@@ -19,7 +19,7 @@
         <ion-row justify-content-center>
             <ion-col align-self-center>
                 <div class="ion-padding-top" text-center>
-                    <img src="assets/img/avatar.png" width="80" alt="">
+                    <img src="assets/img/avatar.png" width="100" alt="">
                 </div>
             </ion-col>
         </ion-row>
@@ -35,10 +35,27 @@
         </ion-row>
     </ion-grid>
 
+     <!-- Icon top -->
+      <ion-segment [(ngModel)]="sections" color="tertiary">
+        <ion-segment-button value="favoritas" checked>
+          <ion-label>Favoritas</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="recomendaciones">
+          <ion-label>Recomendaciones</ion-label>
+          <ion-icon name="bulb"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="cocinadas">
+          <ion-label>Cocinadas</ion-label>
+          <ion-icon name="restaurant"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+
+<div [ngSwitch]="sections">
     <!-- List of Sliding Items -->
-    <ion-list>
+    <ion-list *ngSwitchCase="'favoritas'">
         <ion-list-header>
-            <ion-label>Recetas cocinadas</ion-label>
+            <ion-label>Recetas favoritas</ion-label>
         </ion-list-header>
         <ion-item-sliding>
             <ion-item>
@@ -58,4 +75,5 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
+    </div>
 </ion-content>
