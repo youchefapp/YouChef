@@ -2,6 +2,7 @@ import { AuthService, User } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecetasService } from 'src/app/services/recetas/recetas.service';
+import { ToastService } from 'src/app/util/toast.service';
 
 const DEFAULT_AVATAR = 'assets/img/avatar.png';
 
@@ -15,7 +16,8 @@ export class PerfilPage {
   profileImg: string = DEFAULT_AVATAR;
   sections: string = "favoritas";
 
-  constructor(public auth: AuthService, private recetasService: RecetasService, private router: Router) {
+  constructor(public auth: AuthService, private recetasService: RecetasService,
+    private toastService: ToastService, private router: Router) {
   }
 
   ionViewWillEnter() {
@@ -37,6 +39,14 @@ export class PerfilPage {
 
   changeImgProfile() {
     this.auth.openImagePicker();
+  }
+
+  removeFavourite(id, name) {
+    this.auth.removeFavouriteRecipe(id, name).then(() => {
+      this.user.favRecipes = this.user.favRecipes.filter(receta => receta.id != id);
+
+      this.toastService.presentToast("Receta eliminada de favoritos");
+    })
   }
 
   goToReceta(id) {

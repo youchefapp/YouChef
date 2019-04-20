@@ -80,6 +80,13 @@ export class AuthService {
            .update({ favRecipes: firebase.firestore.FieldValue.arrayUnion({id: id, name: name})});
   }
 
+  removeFavouriteRecipe(id, name) {
+    return firebase
+           .firestore()
+           .doc(`/users/${this.user.uid}`)
+           .update({ favRecipes: firebase.firestore.FieldValue.arrayRemove({id: id, name: name})});
+  }
+
   openImagePicker() {
     this.imagePicker.hasReadPermission().then(
       (result) => {
