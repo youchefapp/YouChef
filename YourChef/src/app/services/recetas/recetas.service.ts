@@ -112,6 +112,66 @@ export class RecetasService {
     });
   }
 
+  getRecipe(id) {
+    return this.database.executeSql("SELECT * FROM recipe WHERE recipe.id = ?", [id]).then((data) => {
+      var receta;
+
+      if (data.rows.length > 0) {
+        for (let i = 0; i < data.rows.length; i++) {
+          receta = data.rows.item(i);
+
+          receta.steps = JSON.parse(receta.steps);
+
+          let steps = [];
+          for (var paso in receta.steps) {
+            if (receta.steps.hasOwnProperty(paso)) {
+              steps.push(receta.steps[paso]);
+            }
+          }
+
+          receta.steps = steps;
+
+          this.database.executeSql("SELECT tag FROM tag INNER JOIN recipe_tags ON tag.id = recipe_tags.tags_id WHERE recipe_tags.recipe_id = ?", [receta.id]).then((data) => {
+            let tags = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              tags.push(data.rows.item(i).tag);
+            }
+            receta.tags = tags;
+          });
+
+          this.database.executeSql("SELECT name, weight FROM ingredient INNER JOIN recipe_ingredient ON ingredient.id = recipe_ingredient.ingredient_id WHERE recipe_ingredient.recipe_id = ?", [receta.id]).then((data) => {
+            let ingredients = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let ingredient: any = {};
+              ingredient.name = data.rows.item(i).name;
+              ingredient.weight = data.rows.item(i).weight;
+              ingredients.push(ingredient);
+            }
+            receta.ingredients = ingredients;
+          });
+
+          this.database.executeSql("SELECT nutrient, cuantity, daily_percentage, unit FROM nutrient INNER JOIN recipe_nutrient ON nutrient.id = recipe_nutrient.nutrient_id WHERE recipe_nutrient.recipe_id = ?", [receta.id]).then((data) => {
+            let nutrients = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let nutrient: any = {};
+              nutrient.name = data.rows.item(i).nutrient;
+              nutrient.cuantity = data.rows.item(i).cuantity;
+              nutrient.daily_percentage = data.rows.item(i).daily_percentage;
+              nutrient.unit = data.rows.item(i).unit;
+              nutrients.push(nutrient);
+            }
+            receta.nutrients = nutrients;
+          });
+        }
+      }
+
+      return receta;
+    }, err => {
+      console.log('Error: ', err);
+      return null;
+    });
+  }
+
   searchRecipe(name, cocina, dificultad, dieta, alergenos) {
     return this.recetas.filter(receta => {
       return receta.name.toLowerCase().indexOf(name.toLowerCase()) > -1

@@ -17,6 +17,7 @@ import {
 export interface User {
   name: string;
   email: string;
+  favRecipes: any[];
   photoURL?: string;
 }
 
@@ -56,7 +57,7 @@ export class AuthService {
         firebase
           .firestore()
           .doc(`/users/${newUserCredential.user.uid}`)
-          .set({ name: credentials.name, email: credentials.email });
+          .set({ name: credentials.name, email: credentials.email, favRecipes: [] });
       })
       .catch(error => {
         console.error(error);
@@ -70,6 +71,13 @@ export class AuthService {
 
   signOut(): Promise<void> {
     return this.afAuth.auth.signOut();
+  }
+
+  addFavouriteRecipe(id, name) {
+    return firebase
+           .firestore()
+           .doc(`/users/${this.user.uid}`)
+           .update({ favRecipes: firebase.firestore.FieldValue.arrayUnion({id: id, name: name})});
   }
 
   openImagePicker() {

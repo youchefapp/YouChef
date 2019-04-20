@@ -2,7 +2,9 @@
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <!-- Workaround because router history always goes back to root tab-->
-            <ion-back-button defaultHref="" routerLink="/tabs/recetas"></ion-back-button>
+            <ion-back-button-tabs defaultHref="/tabs/inicio" tabsPrefix="tabs" tabsPageSelector="app-tabs">
+            </ion-back-button-tabs>
+
         </ion-buttons>
         <ion-title>{{ receta ? receta.name: 'Cargando...' }}</ion-title>
     </ion-toolbar>
@@ -104,7 +106,7 @@
     </div>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button color="danger">
+        <ion-fab-button (click)="addFavourite()" color="danger">
             <ion-icon name="heart"></ion-icon>
         </ion-fab-button>
     </ion-fab>

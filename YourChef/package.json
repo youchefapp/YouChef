@@ -38,6 +38,7 @@
         "cordova-sqlite-storage": "3.2.0",
         "core-js": "^2.5.4",
         "firebase": "^5.9.4",
+        "ion-back-button-tabs": "^2.2.0",
         "rxjs": "~6.3.3",
         "uk.co.workingedge.cordova.plugin.sqliteporter": "1.1.0",
         "zone.js": "~0.8.29"

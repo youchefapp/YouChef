@@ -1,6 +1,7 @@
 import { AuthService, User } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RecetasService } from 'src/app/services/recetas/recetas.service';
 
 const DEFAULT_AVATAR = 'assets/img/avatar.png';
 
@@ -14,7 +15,7 @@ export class PerfilPage {
   profileImg: string = DEFAULT_AVATAR;
   sections: string = "favoritas";
 
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(public auth: AuthService, private recetasService: RecetasService, private router: Router) {
   }
 
   ionViewWillEnter() {
@@ -36,5 +37,19 @@ export class PerfilPage {
 
   changeImgProfile() {
     this.auth.openImagePicker();
+  }
+
+  goToReceta(id) {
+    this.recetasService.getRecipe(id).then((receta) => {
+      this.recetasService.selectedReceta = receta;
+
+      this.router.navigate(['/receta/']).then((e) => {
+        if (e) {
+          console.log("Navigation is successful!");
+        } else {
+          console.log("Navigation has failed!");
+        }
+      });
+    });
   }
 }
