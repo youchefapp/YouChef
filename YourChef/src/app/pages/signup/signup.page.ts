@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { ToastService } from 'src/app/util/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignupPage implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router, public toastController: ToastController) {
+  constructor(private auth: AuthService, private router: Router, public toastService: ToastService) {
   }
 
   ngOnInit() {
@@ -18,29 +18,21 @@ export class SignupPage implements OnInit {
 
   register(form) {
     if (form.value.password != form.value.confirm) {
-      this.presentToast('Las contraseñas no coinciden');
+      this.toastService.presentToast('Las contraseñas no coinciden');
       return false;
     }
 
     this.auth.signUp(form.value).then(
       () => {
         console.log("Usuario creado");
-        this.presentToast('Te has registrado correctamente');
+        this.toastService.presentToast('Te has registrado correctamente');
         this.router.navigate(['/tabs/perfil']);
       },
       error => {
 				console.log(error);
-				this.presentToast(error.message);
+				this.toastService.presentToast(error.message);
 			}
     );
   }
-
-  async presentToast(message) {
-		const toast = await this.toastController.create({
-		  message: message,
-		  duration: 3000
-		});
-		toast.present();
-	  }
 
 }

@@ -23,6 +23,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { RecetasService } from './services/recetas/recetas.service';
+import { ToastService } from './util/toast.service';
 
 import { AuthService } from './services/auth.service';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
@@ -43,6 +44,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
     StatusBar,
     SplashScreen,
     RecetasService,
+    ToastService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     /* Because of a recent update to the Firebase SDK we can also add the provide block at the end to prevent an error message in our log. */
     { provide: FirestoreSettingsToken, useValue: {} },

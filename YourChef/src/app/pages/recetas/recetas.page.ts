@@ -1,12 +1,13 @@
-import { RecetasService } from '../services/recetas/recetas.service';
+import { RecetasService } from '../../services/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import {
   LoadingController,
   IonInfiniteScroll,
   MenuController,
-  ToastController
 } from '@ionic/angular';
+
+import { ToastService } from 'src/app/util/toast.service';
 
 const LIMIT = 5;
 
@@ -30,7 +31,7 @@ export class RecetasPage {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   constructor(private recetasService: RecetasService, public loadingController: LoadingController,
-    private menu: MenuController, public toastController: ToastController,
+    private menu: MenuController, public toastService: ToastService,
     private router: Router) {
     this.offset = 0;
     this.searchVal = "";
@@ -94,7 +95,7 @@ export class RecetasPage {
         this.alergenos);
       this.recetas = this.filteredRecetas;
 
-      if (this.recetas.length == 0) this.presentToast("No se ha encontrado ninguna receta");
+      if (this.recetas.length == 0) this.toastService.presentToast("No se ha encontrado ninguna receta");
     }
     else {
       this.recetas = this.allRecetas;
@@ -128,14 +129,6 @@ export class RecetasPage {
     await loading.present();
   }
 
-  async presentToast(mensaje: string) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: 2000
-    });
-    toast.present();
-  }
-
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
@@ -166,7 +159,7 @@ export class RecetasPage {
 
   }
 
-  round(n:number) {
+  round(n: number) {
     return Math.round(n * 100) / 100;
   }
 }

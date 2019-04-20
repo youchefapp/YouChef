@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecetasService } from '../services/recetas/recetas.service';
+import { RecetasService } from '../../services/recetas/recetas.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
