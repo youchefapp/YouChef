@@ -1,4 +1,4 @@
-import { AuthService, User } from './../../services/auth.service';
+import { AuthService, User, Cocinadas } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RecetasService } from '../../services/recetas/recetas.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -14,17 +14,24 @@ import { AlertController } from '@ionic/angular';
 export class RecetaPage implements OnInit {
   receta: any;
   inFavourites: boolean;
+  inCocinadas: boolean;
+  cocinadaObj: Cocinadas;
+  isAuthenticated: boolean;
+  loaded: boolean;
 
-  constructor(private recetasService: RecetasService, public auth: AuthService, 
-    private toastService: ToastService, private iab: InAppBrowser, public alertController: AlertController) { }
-
-  ngOnInit() {
-    
+  constructor(private recetasService: RecetasService, public auth: AuthService,
+    private toastService: ToastService, private iab: InAppBrowser, public alertController: AlertController) {
+    this.loaded = false;
+    this.isAuthenticated = false;
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
+
+  }
+
+  ionViewDidEnter() {
     this.receta = this.recetasService.selectedReceta;
-    this.checkInFavourites();
+    this.checkInUser();
   }
 
   visitAuthor() {
@@ -32,7 +39,7 @@ export class RecetaPage implements OnInit {
     browser.show();
   }
 
-  round(n:number) {
+  round(n: number) {
     return Math.round(n * 100) / 100;
   }
 
@@ -45,6 +52,18 @@ export class RecetaPage implements OnInit {
   removeFavourite() {
     this.auth.removeFavouriteRecipe(this.receta.id, this.receta.name).then(() => {
       this.toastService.presentToast("Receta eliminada de favoritos");
+    });
+  }
+
+  addCocinada(valoration) {
+    this.auth.addCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, valoration).then(() => {
+      this.toastService.presentToast("¡Receta añadida a tu lista de cocinadas!");
+    });
+  }
+
+  removeCocinada() {
+    this.auth.removeCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, this.cocinadaObj.valoration).then(() => {
+      this.toastService.presentToast("Receta eliminada de tu lista de cocinadas");
     });
   }
 
@@ -95,7 +114,7 @@ export class RecetaPage implements OnInit {
         }, {
           text: 'Ok',
           handler: (data) => {
-            console.log(data);
+            this.addCocinada(data);
           }
         }
       ]
@@ -104,14 +123,27 @@ export class RecetaPage implements OnInit {
     await alert.present();
   }
 
-  private checkInFavourites() {
-    if (this.auth.isAuthenticated()) {
-      this.auth.getUser().subscribe((user: User) => {
+  private checkInUser() {
+    this.auth.isAuthenticated().subscribe((auth) => {
+      if (auth) {
+        this.isAuthenticated = true;
+        this.auth.getUser().subscribe((user: User) => {
 
-        let aux = user.favRecipes.filter(r => r.id == this.receta.id);
-        this.inFavourites = aux.length != 0 ? true : false;
-      });
-    }
+          let auxFav = user.favRecipes.filter(r => r.id == this.receta.id);
+          this.inFavourites = auxFav.length != 0 ? true : false;
+
+          let auxCoc = user.cocinadas[this.receta.cuisine].filter(r => r.id == this.receta.id);
+          this.inCocinadas = auxCoc.length != 0 ? true : false;
+
+          this.cocinadaObj = auxCoc[0];
+          this.loaded = true;
+        });
+      }
+      else {
+        this.isAuthenticated = false;
+        this.loaded = true;
+      }
+    });
   }
 
 }

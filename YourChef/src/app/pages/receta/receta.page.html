@@ -10,7 +10,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="receta">
+<ion-content *ngIf="loaded">
 
     <ion-card mode="ios">
         <img src="assets/img/recetas/{{receta.id}}.jpg" alt="">
@@ -106,7 +106,7 @@
     </div>
 
 
-    <ion-fab *ngIf="auth.isAuthenticated()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab *ngIf="isAuthenticated" vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="dark">
             <ion-icon name="restaurant"></ion-icon>
         </ion-fab-button>
@@ -122,8 +122,12 @@
         </ion-fab-list>
 
         <ion-fab-list side="start">
-            <ion-fab-button (click)="presentAlertRadio()" color="light">
+            <ion-fab-button *ngIf="!inCocinadas" (click)="presentAlertRadio()" color="light">
                 <ion-icon name="restaurant"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-button *ngIf="inCocinadas" (click)="removeCocinada()" color="light">
+                <ion-icon name="trash"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>

@@ -11,7 +11,7 @@ export class ToastService {
   async presentToast(message, ok = true, duration = 2000) {
     const toast = await this.toastController.create({
       message,
-      duration: ok ? null : duration,
+      duration: duration,
       position: 'bottom',
       showCloseButton: ok,
       closeButtonText: 'OK'

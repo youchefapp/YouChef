@@ -20,8 +20,8 @@ export class PerfilPage {
     private toastService: ToastService, private router: Router) {
   }
 
-  ionViewWillEnter() {
-    this.auth.getUser().subscribe((user) => {
+  ionViewDidEnter() {
+    this.auth.getUser().subscribe((user: User) => {
       this.user = user;
       if (this.user.photoURL) this.profileImg = this.user.photoURL;
       else this.profileImg = DEFAULT_AVATAR;

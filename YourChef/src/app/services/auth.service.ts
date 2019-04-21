@@ -12,15 +12,39 @@ import {
   DocumentReference,
   QueryDocumentSnapshot
 } from '@angular/fire/firestore';
+import { Observable, BehaviorSubject } from 'rxjs';
 
+export interface FavRecipes {
+  id: number;
+  name: string;
+}
+
+export interface Cocinadas {
+  id: number;
+  name: string;
+  valoration: string;
+}
 
 export interface User {
   name: string;
   email: string;
-  favRecipes: any[];
+  favRecipes: FavRecipes[];
   photoURL?: string;
+  cocinadas: {
+    Española: Cocinadas[],
+    Griega: Cocinadas[],
+    Italina: Cocinadas[],
+    Mediterránea: Cocinadas[],
+    Alemana: Cocinadas[],
+    Mejicana: Cocinadas[],
+    India: Cocinadas[],
+    Inglesa: Cocinadas[],
+    Asiática: Cocinadas[],
+    Tailandesa: Cocinadas[],
+    China: Cocinadas[],
+    USA: Cocinadas[]
+  }
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +53,15 @@ export class AuthService {
 
   private user: firebase.User;
   private userCollection: AngularFirestoreCollection<User>;
+  private authenticated: BehaviorSubject<boolean>;
 
   constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore,
     private imagePicker: ImagePicker, private webview: WebView) {
+    this.authenticated = new BehaviorSubject<boolean>(false);
+
     afAuth.auth.onAuthStateChanged(user => {
       this.user = user;
+      this.authenticated.next(user ? true : false);
     });
 
     this.userCollection = this.afs.collection('users');
@@ -54,10 +82,29 @@ export class AuthService {
         /* FireAuth está desacoplado de Cloud Firestore, almacenamos en la base de datos
           la información del usuario para posteriormente ir guardando toda la información
           que genere en la aplicación */
+
         firebase
           .firestore()
           .doc(`/users/${newUserCredential.user.uid}`)
-          .set({ name: credentials.name, email: credentials.email, favRecipes: [] });
+          .set({
+            name: credentials.name,
+            email: credentials.email,
+            favRecipes: [],
+            cocinadas: {
+              Española: [],
+              Griega: [],
+              Italina: [],
+              Mediterránea: [],
+              Alemana: [],
+              Mejicana: [],
+              India: [],
+              Inglesa: [],
+              Asiática: [],
+              Tailandesa: [],
+              China: [],
+              USA: []
+            }
+          });
       })
       .catch(error => {
         console.error(error);
@@ -66,11 +113,10 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    if (this.user) return true;
-    return false;
+    return this.authenticated;
   }
 
-  getUser() {
+  getUser(): Observable<User> {
     return this.userCollection.doc<User>(this.user.uid).valueChanges();
   }
 
@@ -80,16 +126,36 @@ export class AuthService {
 
   addFavouriteRecipe(id, name) {
     return firebase
-           .firestore()
-           .doc(`/users/${this.user.uid}`)
-           .update({ favRecipes: firebase.firestore.FieldValue.arrayUnion({id: id, name: name})});
+      .firestore()
+      .doc(`/users/${this.user.uid}`)
+      .update({ favRecipes: firebase.firestore.FieldValue.arrayUnion({ id: id, name: name }) });
   }
 
   removeFavouriteRecipe(id, name) {
     return firebase
-           .firestore()
-           .doc(`/users/${this.user.uid}`)
-           .update({ favRecipes: firebase.firestore.FieldValue.arrayRemove({id: id, name: name})});
+      .firestore()
+      .doc(`/users/${this.user.uid}`)
+      .update({ favRecipes: firebase.firestore.FieldValue.arrayRemove({ id: id, name: name }) });
+  }
+
+  addCocinadaRecipe(id, cuisine, name, valoration) {
+    let obj = {};
+    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayUnion({ id: id, name: name, valoration: valoration });
+
+    return firebase
+      .firestore()
+      .doc(`/users/${this.user.uid}`)
+      .update(obj);
+  }
+
+  removeCocinadaRecipe(id, cuisine, name, valoration) {
+    let obj = {};
+    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayRemove({ id: id, name: name, valoration: valoration });
+
+    return firebase
+      .firestore()
+      .doc(`/users/${this.user.uid}`)
+      .update(obj);
   }
 
   openImagePicker() {
