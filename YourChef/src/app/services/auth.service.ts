@@ -31,15 +31,15 @@ export interface User {
   favRecipes: FavRecipes[];
   photoURL?: string;
   cocinadas: {
-    Española: Cocinadas[],
+    Espanola: Cocinadas[],
     Griega: Cocinadas[],
-    Italina: Cocinadas[],
-    Mediterránea: Cocinadas[],
+    Italiana: Cocinadas[],
+    Mediterranea: Cocinadas[],
     Alemana: Cocinadas[],
-    Mejicana: Cocinadas[],
+    Mexican: Cocinadas[],
     India: Cocinadas[],
     Inglesa: Cocinadas[],
-    Asiática: Cocinadas[],
+    Asiatica: Cocinadas[],
     Tailandesa: Cocinadas[],
     China: Cocinadas[],
     USA: Cocinadas[]
@@ -91,15 +91,15 @@ export class AuthService {
             email: credentials.email,
             favRecipes: [],
             cocinadas: {
-              Española: [],
+              Espanola: [],
               Griega: [],
-              Italina: [],
-              Mediterránea: [],
+              Italiana: [],
+              Mediterranea: [],
               Alemana: [],
-              Mejicana: [],
+              Mexican: [],
               India: [],
               Inglesa: [],
-              Asiática: [],
+              Asiatica: [],
               Tailandesa: [],
               China: [],
               USA: []

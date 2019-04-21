@@ -10,7 +10,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="loaded">
+<ion-content *ngIf="loaded && receta">
 
     <ion-card mode="ios">
         <img src="assets/img/recetas/{{receta.id}}.jpg" alt="">
@@ -90,7 +90,7 @@
                             </p>
                             <p>{{round(receta.nutrients[i].daily_percentage / receta.rations)}}%</p>
                         </ion-col>
-                        <ion-col>
+                        <ion-col *ngIf="i + 1 < receta.nutrients.length">
                             <p><strong>{{receta.nutrients[i + 1].name}}</strong> {{round(receta.nutrients[i + 1].cuantity / receta.rations)}}
                                     {{receta.nutrients[i + 1].unit}}</p>
                             <p>{{round(receta.nutrients[i + 1].daily_percentage / receta.rations)}}%</p>

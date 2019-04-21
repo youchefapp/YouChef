@@ -57,6 +57,11 @@
             <ion-list-header>
                 <ion-label>Recetas favoritas</ion-label>
             </ion-list-header>
+
+            <ion-item *ngIf="user.favRecipes.length == 0">
+                <ion-label text-wrap>Todavía no has añadido ninguna receta a favoritos. ¡Anímate a guardar alguna!</ion-label>
+            </ion-item>
+
             <ion-item-sliding *ngFor="let r of user.favRecipes">
                 <ion-item (click)="goToReceta(r.id)">
                     <ion-label>{{ r.name }}</ion-label>
@@ -66,5 +71,82 @@
                 </ion-item-options>
             </ion-item-sliding>
         </ion-list>
+
+        <div *ngSwitchCase="'cocinadas'">
+            <p padding *ngIf="user.cocinadas.length == 0">Todavía no has cocinado ninguna receta. ¡Te animamos a que cocines alguna y la valores!</p>
+
+            <ion-card *ngIf="user.cocinadas.Italiana && user.cocinadas.Italiana.length != 0">
+                <img src="assets/img/cocinadas/italiana.jpg" />
+                <div class="card-title">Italiana</div>
+                <div class="card-subtitle">{{user.cocinadas.Italiana.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Espanola && user.cocinadas.Espanola.length != 0">
+                <img src="assets/img/cocinadas/española.jpg" />
+                <div class="card-title">Española</div>
+                <div class="card-subtitle">{{user.cocinadas.Espanola.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Griega && user.cocinadas.Griega.length != 0">
+                <img src="assets/img/cocinadas/griega.jpg" />
+                <div class="card-title">Griega</div>
+                <div class="card-subtitle">{{user.cocinadas.Griega.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Mediterranea && user.cocinadas.Mediterranea.length != 0">
+                <img src="assets/img/cocinadas/mediterranea.jpg" />
+                <div class="card-title">Mediterránea</div>
+                <div class="card-subtitle">{{user.cocinadas.Mediterranea.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Alemana && user.cocinadas.Alemana.length != 0">
+                <img src="assets/img/cocinadas/alemana.jpg" />
+                <div class="card-title">Alemana</div>
+                <div class="card-subtitle">{{user.cocinadas.Alemana.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Asiatica && user.cocinadas.Asiatica.length != 0">
+                <img src="assets/img/cocinadas/asiatica.jpg" />
+                <div class="card-title">Asiática</div>
+                <div class="card-subtitle">{{user.cocinadas.Asiatica.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.China && user.cocinadas.China.length != 0">
+                <img src="assets/img/cocinadas/china.jpg" />
+                <div class="card-title">China</div>
+                <div class="card-subtitle">{{user.cocinadas.China.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.India && user.cocinadas.India.length != 0">
+                <img src="assets/img/cocinadas/india.jpg" />
+                <div class="card-title">India</div>
+                <div class="card-subtitle">{{user.cocinadas.India.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Inglesa && user.cocinadas.Inglesa.length != 0">
+                <img src="assets/img/cocinadas/inglesa.jpg" />
+                <div class="card-title">Inglesa</div>
+                <div class="card-subtitle">{{user.cocinadas.Inglesa.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Mexican && user.cocinadas.Mexican.length != 0">
+                <img src="assets/img/cocinadas/mexican.jpg" />
+                <div class="card-title">Mejicana</div>
+                <div class="card-subtitle">{{user.cocinadas.Mexican.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.Tailandesa && user.cocinadas.Tailandesa.length != 0">
+                <img src="assets/img/cocinadas/tailandesa.jpg" />
+                <div class="card-title">Tailandesa</div>
+                <div class="card-subtitle">{{user.cocinadas.Tailandesa.length}} recetas</div>
+            </ion-card>
+
+            <ion-card *ngIf="user.cocinadas.USA && user.cocinadas.USA.length != 0">
+                <img src="assets/img/cocinadas/usa.jpg" />
+                <div class="card-title">USA</div>
+                <div class="card-subtitle">{{user.cocinadas.USA.length}} recetas</div>
+            </ion-card>
+
+        </div>
     </div>
 </ion-content>

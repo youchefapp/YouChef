@@ -31,6 +31,7 @@ export class RecetaPage implements OnInit {
 
   ionViewDidEnter() {
     this.receta = this.recetasService.selectedReceta;
+    console.log(this.receta)
     this.checkInUser();
   }
 
