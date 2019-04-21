@@ -65,6 +65,11 @@ export class AuthService {
       });
   }
 
+  isAuthenticated() {
+    if (this.user) return true;
+    return false;
+  }
+
   getUser() {
     return this.userCollection.doc<User>(this.user.uid).valueChanges();
   }

@@ -105,9 +105,15 @@
         <img src="assets/img/edamam.png" class="displayed" height="40" width="200" alt="Powered by Edamam">
     </div>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab *ngIf="auth.isAuthenticated() && !inFavourites" vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="addFavourite()" color="danger">
             <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab *ngIf="auth.isAuthenticated() && inFavourites" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="removeFavourite()" color="danger">
+            <ion-icon name="heart-dislike"></ion-icon>
         </ion-fab-button>
     </ion-fab>
 

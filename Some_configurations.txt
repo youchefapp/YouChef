@@ -1,0 +1,62 @@
+###################################################
+Configuración del PATH herramientas Android (.bashrc, .zshrc)
+###################################################
+
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+
+#avdmanager, sdkmanager
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+
+#adb, logcat
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+#emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+
+export PATH=${PATH}:$HOME/android-studio/gradle/gradle-4.10.1/bin
+
+###################################################
+Permisos ejecución Gradle
+###################################################
+
+cd android-studio/gradle/gradle-4.10.1/bin 
+sudo chmod +x gradle
+
+###################################################
+net::ERR_CLEARTEXT_NOT_PERMITTED errors (editar config.xml)
+###################################################
+
+The default API level in the Cordova Android platform has been upgraded. On an Android 9 device, clear text communication is now disabled by default.
+
+To allow clear text communication again, set the android:usesCleartextTraffic on your application tag to true:
+
+<platform name="android">
+  <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+      <application android:usesCleartextTraffic="true" />
+  </edit-config>
+</platform>
+
+
+###################################################
+KVM Hardware acceleration Android emulator
+###################################################
+
+Starting with Ubuntu 18.04 and Linux Mint Tara you need to first sudo apt install qemu-kvm.
+
+To check the ownership of /dev/kvm use
+
+ls -al /dev/kvm
+The user was root, the group kvm. To check which users are in the kvm group, use
+
+grep kvm /etc/group
+This returned
+
+kvm:x:some_number:
+on my system: as there is nothing rightwards of the final :, there are no users in the kvm group.
+
+To add your user to the kvm group, you could use
+
+sudo adduser $USER kvm
+which adds the user to the group, and check once again with grep kvm /etc/group.
+
+You might want to log out and back in (or restart), for the permissions to take effect.
