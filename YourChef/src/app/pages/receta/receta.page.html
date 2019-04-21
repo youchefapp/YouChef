@@ -105,16 +105,27 @@
         <img src="assets/img/edamam.png" class="displayed" height="40" width="200" alt="Powered by Edamam">
     </div>
 
-    <ion-fab *ngIf="auth.isAuthenticated() && !inFavourites" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="addFavourite()" color="danger">
-            <ion-icon name="heart"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
 
-    <ion-fab *ngIf="auth.isAuthenticated() && inFavourites" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="removeFavourite()" color="danger">
-            <ion-icon name="heart-dislike"></ion-icon>
+    <ion-fab *ngIf="auth.isAuthenticated()" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="dark">
+            <ion-icon name="restaurant"></ion-icon>
         </ion-fab-button>
+
+        <ion-fab-list side="top">
+            <ion-fab-button *ngIf="!inFavourites" (click)="addFavourite()" color="danger">
+                <ion-icon name="heart"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-button *ngIf="inFavourites" (click)="removeFavourite()" color="danger">
+                <ion-icon name="heart-dislike"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+
+        <ion-fab-list side="start">
+            <ion-fab-button (click)="presentAlertRadio()" color="light">
+                <ion-icon name="restaurant"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
     </ion-fab>
 
 </ion-content>

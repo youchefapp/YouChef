@@ -1,3 +1,11 @@
 .profile {
     background-color: var(--ion-color-primary, #457b9d);
 }
+
+.profile-avatar {
+    border-radius: 10%;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.500);
+    border-width: 3px;
+    box-shadow: 2px 2px 18px rgba(0, 0, 0, 0.600);
+}
