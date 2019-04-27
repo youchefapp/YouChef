@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <!-- Workaround because router history always goes back to root tab-->
+            <ion-back-button-tabs defaultHref="/tabs/inicio" tabsPrefix="tabs" tabsPageSelector="app-tabs">
+            </ion-back-button-tabs>
+
+        </ion-buttons>
+        <ion-title>Recetas cocinadas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Recetas {{categoria}}s</ion-label>
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let r of cocinadas">
+            <ion-item (click)="goToReceta(r.id)">
+                <ion-thumbnail item-start class="ion-margin-end">
+                    <img src="assets/img/recetas/{{r.id}}.jpg">
+                </ion-thumbnail>
+                <ion-label>
+                    <h2>{{r.name}}</h2>
+                    <p>Valoración</p>
+
+                    <p *ngIf="r.valoration == 'excelente'">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                    </p>
+
+                    <p *ngIf="r.valoration == 'muybuena'">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </p>
+
+                    <p *ngIf="r.valoration == 'buena'">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </p>
+
+                    <p *ngIf="r.valoration == 'regular'">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </p>
+
+                    <p *ngIf="r.valoration == 'mal'">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </p>
+
+                </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="danger">Eliminar</ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
