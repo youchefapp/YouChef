@@ -44,7 +44,27 @@ export interface User {
     Tailandesa: Cocinadas[],
     China: Cocinadas[],
     USA: Cocinadas[]
-  }
+  };
+  ajustes: {
+    gluten: boolean,
+    huevo: boolean,
+    lacteos: boolean,
+    azucar: boolean,
+    soja: boolean,
+    frutosSecos: boolean,
+    nueces: boolean,
+    pescado: boolean,
+    mariscos: boolean,
+    carbohidratos: boolean,
+    sodio: boolean,
+    fibra: boolean,
+    proteico: boolean,
+    grasas: boolean,
+    pocaGrasa: boolean,
+    equilibrada: boolean,
+    vegetariano: boolean,
+    paleo: boolean
+  };
 }
 
 @Injectable({
@@ -104,6 +124,26 @@ export class AuthService {
               Tailandesa: [],
               China: [],
               USA: []
+            },
+            ajustes: {
+              gluten: false,
+              huevo: false,
+              lacteos: false,
+              azucar: false,
+              soja: false,
+              frutosSecos: false,
+              nueces: false,
+              pescado: false,
+              mariscos: false,
+              carbohidratos: false,
+              sodio: false,
+              fibra: false,
+              proteico: false,
+              grasas: false,
+              pocaGrasa: false,
+              equilibrada: false,
+              vegetariano: false,
+              paleo: false
             }
           });
       })
@@ -157,6 +197,13 @@ export class AuthService {
       .firestore()
       .doc(`/users/${this.user.uid}`)
       .update(obj);
+  }
+
+  updateSettings(settings) {
+    return firebase
+      .firestore()
+      .doc(`/users/${this.user.uid}`)
+      .update({ ajustes: settings });
   }
 
   openImagePicker() {

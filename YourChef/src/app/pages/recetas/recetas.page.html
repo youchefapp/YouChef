@@ -65,16 +65,21 @@
                     <ion-select-option value="Sin mariscos">Sin mariscos</ion-select-option>
                 </ion-select>
             </ion-item>
+
+            <ion-item *ngIf="isAuthenticated">
+                <ion-label>Utilizar preferencias</ion-label>
+                <ion-toggle (ionChange)="filterByUserSettings()" color="primary"></ion-toggle>
+            </ion-item>
         </ion-list>
 
-        
+
     </ion-content>
 
     <ion-footer>
-  <ion-toolbar>
-    <ion-button (click)="closeMenu()" expand="full">Filtrar</ion-button>
-  </ion-toolbar>
-</ion-footer>
+        <ion-toolbar>
+            <ion-button (click)="closeMenu()" expand="full">Filtrar</ion-button>
+        </ion-toolbar>
+    </ion-footer>
 </ion-menu>
 
 <ion-router-outlet main></ion-router-outlet>
@@ -122,5 +127,5 @@
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más recetas...">
         </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    
+
 </ion-content>

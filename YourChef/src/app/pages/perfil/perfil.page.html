@@ -2,7 +2,7 @@
     <ion-toolbar color="primary">
         <ion-buttons slot="end">
             <ion-button (click)="logout()" color="light">Cerrar sesión</ion-button>
-            <ion-button color="light">
+            <ion-button [routerLink]="['/settings']" color="light">
                 <ion-icon name="settings"></ion-icon>
             </ion-button>
         </ion-buttons>

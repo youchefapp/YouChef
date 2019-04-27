@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <!-- Workaround because router history always goes back to root tab-->
+            <ion-back-button-tabs defaultHref="/tabs/inicio" tabsPrefix="tabs" tabsPageSelector="app-tabs">
+            </ion-back-button-tabs>
+
+        </ion-buttons>
+        <ion-title>Ajustes</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <p padding>Configura las siguientes opciones para mostrarte recetas según tus preferencias</p>
+
+    <ion-list *ngIf="user">
+        <ion-list-header>
+            Alérgenos
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label>Sin gluten</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.gluten" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Sin huevo</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.huevo" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sin lácteos</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.lacteos" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sin azúcar</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.azucar" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sin soja</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.soja" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label> Sin frutos secos</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.frutosSecos" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Libre de nueces y de cacahuetes</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.nueces" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sin pescado</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.pescado" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sin mariscos</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.mariscos" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Dieta
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label>Bajo en carbohidratos</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.carbohidratos" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Bajo en sodio</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.sodio" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Mucha fibra</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.fibra" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Alto valor protéico</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.proteico" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Bajo en grasas</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.grasas" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Poca grasa</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.pocaGrasa" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Equilibrada</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.equilibrada" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Vegetariano</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.vegetariano" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Paleo</ion-label>
+            <ion-toggle [(ngModel)]="user.ajustes.paleo" (ionChange)="edit($event)" color="primary"></ion-toggle>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
