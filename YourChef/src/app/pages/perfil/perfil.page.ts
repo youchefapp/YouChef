@@ -25,12 +25,8 @@ export class PerfilPage {
   profileImg: string = DEFAULT_AVATAR;
   sections: string = "favoritas";
 
-  // Indica si hay estadísticas de dietas disponibles. El gráfico se construye si solo hay recetas
-  showDietaEstadisticas: boolean;
-
   constructor(public auth: AuthService, private recetasService: RecetasService,
     private toastService: ToastService, private router: Router) {
-      this.showDietaEstadisticas = false;
   }
 
   ionViewDidEnter() {
@@ -80,7 +76,7 @@ export class PerfilPage {
     if (event.detail.value == "estadisticas") {
       setTimeout(() => {
         this.barChart = this.getBarChart();
-        if (this.showDietaEstadisticas) this.halfDoughnutChart = this.getHalfDoughnutChart();
+        this.halfDoughnutChart = this.getHalfDoughnutChart();
         this.barChartValoracion = this.getBarChartValoracion();
       }, 150);
     }
@@ -282,8 +278,11 @@ export class PerfilPage {
       });
     }
 
-    if (estadisticas.labels.length != 0) {
-      this.showDietaEstadisticas = true;
+    if (estadisticas.labels.length == 0) {
+      for (var cocina in this.user.cocinadas) {
+        estadisticas.labels.push(cocina);
+        estadisticas.data.push(0);
+      }
     }
 
     return estadisticas;
