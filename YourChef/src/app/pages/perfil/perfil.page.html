@@ -77,16 +77,34 @@
         <div *ngSwitchCase="'estadisticas'">
             <ion-card>
                 <ion-card-header>
-                    Recetas cocinadas
+                    Recetas cocinadas (tipo de cocina)
                 </ion-card-header>
                 <ion-card-content>
                     <canvas #barCanvas></canvas>
                 </ion-card-content>
             </ion-card>
+
+            <ion-card *ngIf="showDietaEstadisticas">
+                <ion-card-header>
+                    Recetas cocinadas (dieta y alérgenos)
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas #halfDoughnutCanvas></canvas>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+                <ion-card-header>
+                    Valoración media de las recetas cocinadas
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas #barCanvasValoracion></canvas>
+                </ion-card-content>
+            </ion-card>
         </div>
 
         <div *ngSwitchCase="'cocinadas'">
-            <p padding *ngIf="user.cocinadas.length == 0">Todavía no has cocinado ninguna receta. ¡Te animamos a que cocines alguna y la valores!</p>
+            <p padding *ngIf="!hasAnyRecipeCocinada()">Todavía no has cocinado ninguna receta. ¡Te animamos a que cocines alguna y la valores!</p>
 
             <ion-card [routerLink]="['/cocinadas', 'Italiana']" *ngIf="user.cocinadas.Italiana && user.cocinadas.Italiana.length != 0">
                 <img src="assets/img/cocinadas/italiana.jpg" />

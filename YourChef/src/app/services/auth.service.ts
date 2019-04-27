@@ -23,6 +23,7 @@ export interface Cocinadas {
   id: number;
   name: string;
   valoration: string;
+  tags: string[];
 }
 
 export interface User {
@@ -138,9 +139,9 @@ export class AuthService {
       .update({ favRecipes: firebase.firestore.FieldValue.arrayRemove({ id: id, name: name }) });
   }
 
-  addCocinadaRecipe(id, cuisine, name, valoration) {
+  addCocinadaRecipe(id, cuisine, name, valoration, tags) {
     let obj = {};
-    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayUnion({ id: id, name: name, valoration: valoration });
+    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayUnion({ id: id, name: name, valoration: valoration, tags: tags });
 
     return firebase
       .firestore()
@@ -148,9 +149,9 @@ export class AuthService {
       .update(obj);
   }
 
-  removeCocinadaRecipe(id, cuisine, name, valoration) {
+  removeCocinadaRecipe(id, cuisine, name, valoration, tags) {
     let obj = {};
-    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayRemove({ id: id, name: name, valoration: valoration });
+    obj['cocinadas.' + cuisine] = firebase.firestore.FieldValue.arrayRemove({ id: id, name: name, valoration: valoration, tags: tags });
 
     return firebase
       .firestore()

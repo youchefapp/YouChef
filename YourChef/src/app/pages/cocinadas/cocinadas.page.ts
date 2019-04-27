@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User, AuthService, Cocinadas } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecetasService } from 'src/app/services/recetas/recetas.service';
+import { ToastService } from 'src/app/util/toast.service';
 
 @Component({
   selector: 'app-cocinadas',
@@ -14,7 +15,7 @@ export class CocinadasPage implements OnInit {
   cocinadas: Cocinadas[];
 
   constructor(public auth: AuthService, private recetasService: RecetasService,
-    private route: ActivatedRoute, private router: Router) { }
+    private toastService: ToastService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.categoria = this.route.snapshot.paramMap.get('categoria');
@@ -26,6 +27,12 @@ export class CocinadasPage implements OnInit {
       this.cocinadas = this.user.cocinadas[this.categoria];
     }, err => {
       console.log("Couldn't retrieve user");
+    });
+  }
+
+  removeCocinada(id, name, valoration, tags) {
+    this.auth.removeCocinadaRecipe(id, this.categoria, name, valoration, tags).then(() => {
+      this.toastService.presentToast("Receta eliminada de tu lista de cocinadas");
     });
   }
 

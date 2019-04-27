@@ -57,13 +57,13 @@ export class RecetaPage implements OnInit {
   }
 
   addCocinada(valoration) {
-    this.auth.addCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, valoration).then(() => {
+    this.auth.addCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, valoration, this.receta.tags).then(() => {
       this.toastService.presentToast("¡Receta añadida a tu lista de cocinadas!");
     });
   }
 
   removeCocinada() {
-    this.auth.removeCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, this.cocinadaObj.valoration).then(() => {
+    this.auth.removeCocinadaRecipe(this.receta.id, this.receta.cuisine, this.receta.name, this.cocinadaObj.valoration, this.cocinadaObj.tags).then(() => {
       this.toastService.presentToast("Receta eliminada de tu lista de cocinadas");
     });
   }
