@@ -18,7 +18,7 @@
         <ion-item-sliding *ngFor="let r of cocinadas">
             <ion-item (click)="goToReceta(r.id)">
                 <ion-thumbnail item-start class="ion-margin-end">
-                    <img src="assets/img/recetas/{{r.id}}.jpg">
+                    <ion-img src="assets/img/recetas/{{r.id}}.jpg"></ion-img>
                 </ion-thumbnail>
                 <ion-label>
                     <h2>{{r.name}}</h2>

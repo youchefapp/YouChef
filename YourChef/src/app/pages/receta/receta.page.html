@@ -13,7 +13,7 @@
 <ion-content *ngIf="loaded && receta">
 
     <ion-card mode="ios">
-        <img src="assets/img/recetas/{{receta.id}}.jpg" alt="">
+        <ion-img src="assets/img/recetas/{{receta.id}}.jpg" [alt]="receta.name"></ion-img>
         <ion-card-header>
             <ion-card-subtitle>
                 <ion-icon name="restaurant"></ion-icon>
