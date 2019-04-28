@@ -10,11 +10,11 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="user">
 
     <p padding>Configura las siguientes opciones para mostrarte recetas según tus preferencias</p>
 
-    <ion-list *ngIf="user">
+    <ion-list>
         <ion-list-header>
             Alérgenos
         </ion-list-header>

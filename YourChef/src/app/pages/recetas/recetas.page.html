@@ -68,7 +68,7 @@
 
             <ion-item *ngIf="isAuthenticated">
                 <ion-label>Utilizar preferencias</ion-label>
-                <ion-toggle (ionChange)="filterByUserSettings()" color="primary"></ion-toggle>
+                <ion-toggle [(ngModel)]="filterBySettings" (ionChange)="filterByUserSettings()" color="primary"></ion-toggle>
             </ion-item>
         </ion-list>
 

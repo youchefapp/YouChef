@@ -17,9 +17,22 @@
                 <strong>YourChef</strong> es una aplicación con más de 100 recetas de distintos países del mundo. Organizadas por dificultad, ingredientes, alérgenos y diferentes tipos de dieta. Con YourChef puedes mejorar tus habilidades culinarias manteniendo
                 un registro de las recetas que más te gustan y has cocinado.
             </p>
+
         </ion-card-content>
         <ion-card-header>
-            <ion-card-subtitle>¡Regístrate para empezar a recomendarte recetas nuevas!</ion-card-subtitle>
+            <ion-card-subtitle *ngIf="!isAuthenticated">
+                ¡Regístrate para empezar a recomendarte recetas nuevas!
+                <ion-button [routerLink]="['/register']" class="ion-margin-top" expand="block" fill="outline">Registrarse</ion-button>
+            </ion-card-subtitle>
         </ion-card-header>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-avatar class="ion-float-left ion-margin-end">
+                <img src="assets/img/fdi.png" alt="">
+            </ion-avatar>
+            Creado por David Arroyo, Adrián Camacho y Javier Picatoste en la Facultad de Informática de la UCM
+        </ion-card-content>
     </ion-card>
 </ion-content>

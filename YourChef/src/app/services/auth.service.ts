@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Storage } from '@ionic/storage';
 
 import {
   AngularFirestore,
@@ -77,7 +78,7 @@ export class AuthService {
   private authenticated: BehaviorSubject<boolean>;
 
   constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore,
-    private imagePicker: ImagePicker, private webview: WebView) {
+    private imagePicker: ImagePicker, private webview: WebView, private storage: Storage) {
     this.authenticated = new BehaviorSubject<boolean>(false);
 
     afAuth.auth.onAuthStateChanged(user => {
@@ -227,6 +228,14 @@ export class AuthService {
       }, (err) => {
         console.log(err);
       });
+  }
+
+  showSettingsHelp() {
+    return this.storage.get('settings_help');
+  }
+
+  showedSettingsHelp() {
+    return this.storage.set('settings_help', 'showed');
   }
 
   private uploadImage(imageURI) {
