@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-// https://github.com/servrox/demo-ionic-tabs-back-button#getting-started
-import { BackButtonTabsModule } from 'ion-back-button-tabs';
-
 import { IonicModule } from '@ionic/angular';
 
 import { RecetaPage } from './receta.page';
@@ -22,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    BackButtonTabsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [RecetaPage],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  declarations: [RecetaPage]
 })
 export class RecetaPageModule {}

@@ -5,9 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignupPage } from './signup.page';
-
-import { BackButtonTabsModule } from 'ion-back-button-tabs';
+import { SignupPage } from './signup.page';;
 
 const routes: Routes = [
   {
@@ -21,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    BackButtonTabsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [SignupPage],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  declarations: [SignupPage]
 })
 export class SignupPageModule {}

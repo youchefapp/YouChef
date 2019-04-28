@@ -27,7 +27,7 @@
                         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Entrar</ion-button>
                     </div>
                     <div text-center>
-                        <a [routerLink]="['/register']">
+                        <a [routerLink]="['/register', {p: currentRoute}]">
                             <ion-text color="light">
                                 <p>No estoy registrado</p>
                             </ion-text>

@@ -7,8 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { SettingsPage } from './settings.page';
 
-import { BackButtonTabsModule } from 'ion-back-button-tabs';
-
 const routes: Routes = [
   {
     path: '',
@@ -21,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    BackButtonTabsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [SettingsPage],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  declarations: [SettingsPage]
 })
 export class SettingsPageModule {}

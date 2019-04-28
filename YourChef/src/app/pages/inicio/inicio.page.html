@@ -22,7 +22,7 @@
         <ion-card-header>
             <ion-card-subtitle *ngIf="!isAuthenticated">
                 ¡Regístrate para empezar a recomendarte recetas nuevas!
-                <ion-button [routerLink]="['/register']" class="ion-margin-top" expand="block" fill="outline">Registrarse</ion-button>
+                <ion-button [routerLink]="['/register', {p: this.currentRoute}]" class="ion-margin-top" expand="block" fill="outline">Registrarse</ion-button>
             </ion-card-subtitle>
         </ion-card-header>
     </ion-card>

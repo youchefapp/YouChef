@@ -1,5 +1,6 @@
 import { AuthService, User, Cocinadas } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
 import { RecetasService } from '../../services/recetas/recetas.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ToastService } from 'src/app/util/toast.service';
@@ -19,10 +20,15 @@ export class RecetaPage implements OnInit {
   isAuthenticated: boolean;
   loaded: boolean;
 
+  previousPage: string;
+
   constructor(private recetasService: RecetasService, public auth: AuthService,
-    private toastService: ToastService, private iab: InAppBrowser, public alertController: AlertController) {
+    private toastService: ToastService, private iab: InAppBrowser, public alertController: AlertController,
+    private router: Router, private route: ActivatedRoute) {
     this.loaded = false;
     this.isAuthenticated = false;
+
+    this.previousPage = this.route.snapshot.paramMap.get('p') ? atob(this.route.snapshot.paramMap.get('p')) : null;
   }
 
   ngOnInit() {
@@ -123,6 +129,8 @@ export class RecetaPage implements OnInit {
 
     await alert.present();
   }
+
+  back() { this.router.navigateByUrl(this.previousPage); }
 
   private checkInUser() {
     this.auth.isAuthenticated().subscribe((auth) => {

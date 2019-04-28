@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 	styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+	currentRoute: string;
+
 	constructor(private auth: AuthService, private router: Router, public toastService: ToastService) {
+		this.currentRoute = btoa(this.router.url);
 	}
 
 	ngOnInit() {

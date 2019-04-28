@@ -14,8 +14,14 @@ export class CocinadasPage implements OnInit {
   categoria: string;
   cocinadas: Cocinadas[];
 
+  currentRoute: string;
+  previousPage: string;
+
   constructor(public auth: AuthService, private recetasService: RecetasService,
-    private toastService: ToastService, private route: ActivatedRoute, private router: Router) { }
+    private toastService: ToastService, private route: ActivatedRoute, private router: Router) {
+      this.currentRoute = btoa(this.router.url); 
+      this.previousPage = this.route.snapshot.paramMap.get('p') ? atob(this.route.snapshot.paramMap.get('p')) : null;
+     }
 
   ngOnInit() {
     this.categoria = this.route.snapshot.paramMap.get('categoria');
@@ -40,7 +46,7 @@ export class CocinadasPage implements OnInit {
     this.recetasService.getRecipe(id).then((receta) => {
       this.recetasService.selectedReceta = receta;
 
-      this.router.navigate(['/receta/']).then((e) => {
+      this.router.navigate(['/receta/', {p: this.currentRoute}]).then((e) => {
         if (e) {
           console.log("Navigation is successful!");
         } else {
@@ -49,5 +55,7 @@ export class CocinadasPage implements OnInit {
       });
     });
   }
+
+  back() { this.router.navigateByUrl(this.previousPage); }
 
 }

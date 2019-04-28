@@ -30,6 +30,8 @@ export class RecetasPage {
   alergenos: string[];
   isAuthenticated: boolean;
 
+  currentRoute: string;
+
   filterBySettings: boolean;
   user: User;
 
@@ -47,6 +49,8 @@ export class RecetasPage {
 
     this.filterBySettings = false;
     this.isAuthenticated = false;
+
+    this.currentRoute = btoa(this.router.url);
   }
 
   ngOnInit(): void {
@@ -175,7 +179,7 @@ export class RecetasPage {
 
   goToReceta(receta) {
     this.recetasService.selectedReceta = receta;
-    this.router.navigate(['/receta/']).then((e) => {
+    this.router.navigate(['/receta/', {p: this.currentRoute}]).then((e) => {
       if (e) {
         console.log("Navigation is successful!");
       } else {

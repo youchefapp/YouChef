@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService, User } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/util/toast.service';
 
@@ -9,8 +10,11 @@ import { ToastService } from 'src/app/util/toast.service';
 })
 export class SettingsPage implements OnInit {
   user: User;
+  previousPage: string;
 
-  constructor(private auth: AuthService, public toastService: ToastService) { }
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, public toastService: ToastService) {
+    this.previousPage = this.route.snapshot.paramMap.get('p') ? atob(this.route.snapshot.paramMap.get('p')) : null;
+   }
 
   ngOnInit() {
   }
@@ -37,5 +41,7 @@ export class SettingsPage implements OnInit {
       console.log("Settings updated");
     });
   }
+
+  back() { this.router.navigateByUrl(this.previousPage); }
 
 }

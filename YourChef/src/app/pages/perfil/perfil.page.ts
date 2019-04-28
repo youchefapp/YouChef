@@ -22,12 +22,15 @@ export class PerfilPage {
   halfDoughnutChart: any;
   barChartValoracion: any;
 
+  currentRoute: string;
+
   user: User;
   profileImg: string = DEFAULT_AVATAR;
   sections: string = "favoritas";
 
   constructor(public auth: AuthService, private recetasService: RecetasService,
     private estadisticas: EstadisticasService, private toastService: ToastService, private router: Router) {
+      this.currentRoute = btoa(this.router.url);
   }
 
   ionViewDidEnter() {
@@ -63,7 +66,7 @@ export class PerfilPage {
     this.recetasService.getRecipe(id).then((receta) => {
       this.recetasService.selectedReceta = receta;
 
-      this.router.navigate(['/receta/']).then((e) => {
+      this.router.navigate(['/receta/', {p: this.currentRoute}]).then((e) => {
         if (e) {
           console.log("Navigation is successful!");
         } else {
