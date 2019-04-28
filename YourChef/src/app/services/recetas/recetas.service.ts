@@ -53,7 +53,7 @@ export class RecetasService {
 
   getRecipes() {
     return this.database.executeSql("SELECT * FROM recipe", []).then((data) => {
-      if (data.rows.length > 0) {
+      if (data.rows.length > 0 && this.recetas.length == 0) {
         for (let i = 0; i < data.rows.length; i++) {
           let receta = data.rows.item(i);
 

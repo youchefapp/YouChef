@@ -23,6 +23,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { RecetasService } from './services/recetas/recetas.service';
+import { EstadisticasService } from './services/estadisticas.service';
 import { ToastService } from './util/toast.service';
 
 import { AuthService } from './services/auth.service';
@@ -52,6 +53,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
     SQLite,
     InAppBrowser,
     AuthService,
+    EstadisticasService,
     WebView,
     ImagePicker
   ],

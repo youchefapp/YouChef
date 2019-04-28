@@ -27,6 +27,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'recetas/:categoria',
+        children: [
+          {
+            path: '',
+            loadChildren: '../recetas/recetas.module#RecetasModule'
+          }
+        ]
+      },
+      {
         path: 'perfil',
         children: [
           {

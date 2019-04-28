@@ -70,6 +70,11 @@
                 <ion-label>Utilizar preferencias</ion-label>
                 <ion-toggle [(ngModel)]="filterBySettings" (ionChange)="filterByUserSettings()" color="primary"></ion-toggle>
             </ion-item>
+
+            <ion-item *ngIf="isAuthenticated">
+                <ion-label>Mostrar recomendaciones</ion-label>
+                <ion-toggle color="primary"></ion-toggle>
+            </ion-item>
         </ion-list>
 
 

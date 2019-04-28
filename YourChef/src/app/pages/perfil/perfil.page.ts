@@ -5,6 +5,7 @@ import { RecetasService } from 'src/app/services/recetas/recetas.service';
 import { ToastService } from 'src/app/util/toast.service';
 
 import chartJs from 'chart.js';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 
 const DEFAULT_AVATAR = 'assets/img/avatar.png';
 
@@ -26,7 +27,7 @@ export class PerfilPage {
   sections: string = "favoritas";
 
   constructor(public auth: AuthService, private recetasService: RecetasService,
-    private toastService: ToastService, private router: Router) {
+    private estadisticas: EstadisticasService, private toastService: ToastService, private router: Router) {
   }
 
   ionViewDidEnter() {
@@ -102,7 +103,7 @@ export class PerfilPage {
       labels: ['Española', 'Griega', 'Italiana', 'Mediterránea', 'Alemana', 'Mexicana', 'India', 'Inglesa', 'Asiática', 'Tailandesa', 'China', 'USA'],
       datasets: [{
         label: '# de recetas',
-        data: this.getEstadisticasPais(),
+        data: this.estadisticas.getEstadisticasPais(this.user),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -156,7 +157,7 @@ export class PerfilPage {
   }
 
   private getBarChartValoracion() {
-    let estadisticas = this.getEstadisticasValoracion();
+    let estadisticas = this.estadisticas.getEstadisticasValoracion(this.user);
 
     const data = {
       labels: estadisticas.labels,
@@ -210,7 +211,7 @@ export class PerfilPage {
   }
 
   getHalfDoughnutChart() {
-    let estadisticas = this.getEstadisticasDieta();
+    let estadisticas = this.estadisticas.getEstadisticasDieta(this.user);
 
     const data = {
       labels: estadisticas.labels,
@@ -258,85 +259,5 @@ export class PerfilPage {
       options,
       type: chartType,
     });
-  }
-
-  private getEstadisticasDieta() {
-    let estadisticas = { labels: [], data: [] };
-
-    for (var cocina in this.user.cocinadas) {
-      this.user.cocinadas[cocina].forEach(element => {
-        element.tags.forEach(tag => {
-          let index = estadisticas.labels.indexOf(tag);
-          if (index == -1) {
-            let i = estadisticas.labels.push(tag);
-            estadisticas.data[i - 1] = 1;
-          }
-          else {
-            estadisticas.data[index]++;
-          }
-        });
-      });
-    }
-
-    if (estadisticas.labels.length == 0) {
-      for (var cocina in this.user.cocinadas) {
-        estadisticas.labels.push(cocina);
-        estadisticas.data.push(0);
-      }
-    }
-
-    return estadisticas;
-  }
-
-  private getEstadisticasValoracion() {
-    let estadisticas = { labels: [], data: [] };
-
-    for (var cocina in this.user.cocinadas) {
-      estadisticas.labels.push(cocina);
-      let mean = 0;
-
-      if (this.user.cocinadas[cocina].length != 0) {
-        this.user.cocinadas[cocina].forEach(element => {
-          mean += this.valorationToNumber(element.valoration);
-         });
-         mean /= this.user.cocinadas[cocina].length;
-      }
-
-      estadisticas.data.push(mean);
-    };
-
-    return estadisticas;
-  }
-
-  private valorationToNumber(valoration) {
-    let val;
-
-    switch (valoration) {
-      case 'excelente': val = 5; break;
-      case 'muybuena': val = 4; break;
-      case 'buena': val = 3; break;
-      case 'regular': val = 2; break;
-      case 'mal': val = 1; break;
-    }
-
-    return val;
-  }
-
-  private getEstadisticasPais() {
-    let estadisticas = [];
-    estadisticas.push(this.user.cocinadas.Espanola.length);
-    estadisticas.push(this.user.cocinadas.Griega.length);
-    estadisticas.push(this.user.cocinadas.Italiana.length);
-    estadisticas.push(this.user.cocinadas.Mediterranea.length);
-    estadisticas.push(this.user.cocinadas.Alemana.length);
-    estadisticas.push(this.user.cocinadas.Mexican.length);
-    estadisticas.push(this.user.cocinadas.India.length);
-    estadisticas.push(this.user.cocinadas.Inglesa.length);
-    estadisticas.push(this.user.cocinadas.Asiatica.length);
-    estadisticas.push(this.user.cocinadas.Tailandesa.length);
-    estadisticas.push(this.user.cocinadas.China.length);
-    estadisticas.push(this.user.cocinadas.USA.length);
-
-    return estadisticas;
   }
 }

@@ -1,6 +1,6 @@
 import { RecetasService } from '../../services/recetas/recetas.service';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import {
   LoadingController,
   IonInfiniteScroll,
@@ -37,7 +37,7 @@ export class RecetasPage {
 
   constructor(private recetasService: RecetasService, public loadingController: LoadingController,
     private menu: MenuController, public toastService: ToastService,
-    private auth: AuthService, private router: Router) {
+    private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.offset = 0;
     this.searchVal = "";
     this.cocina = [];
@@ -51,6 +51,7 @@ export class RecetasPage {
 
   ngOnInit(): void {
     this.presentLoading();
+    this.getCocinaParam();
 
     this.recetasService.getDatabaseState().subscribe(rdy => {
       if (rdy) {
@@ -64,6 +65,7 @@ export class RecetasPage {
           this.recetas = this.allRecetas;
           this.offset += LIMIT;
           this.loadingController.dismiss();
+          this.filter();
         });
       }
     })
@@ -81,6 +83,8 @@ export class RecetasPage {
         this.isAuthenticated = false;
       }
     });
+
+    this.getCocinaParam();
   }
 
   loadData(event) {
@@ -212,4 +216,13 @@ export class RecetasPage {
       this.clearFilters();
     }    
   }
+
+  private getCocinaParam() {
+    let cocinaParam = this.route.snapshot.paramMap.get('categoria');
+    if (cocinaParam) {
+      this.cocina = [];
+      this.cocina.push(cocinaParam);
+    }
+  }
+
 }
