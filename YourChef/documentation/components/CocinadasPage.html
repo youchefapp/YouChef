@@ -1,0 +1,987 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>yourchef documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">yourchef documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CocinadasPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/cocinadas/cocinadas.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-cocinadas</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./cocinadas.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./cocinadas.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#auth">auth</a>
+                            </li>
+                            <li>
+                                <a href="#categoria">categoria</a>
+                            </li>
+                            <li>
+                                <a href="#cocinadas">cocinadas</a>
+                            </li>
+                            <li>
+                                <a href="#currentRoute">currentRoute</a>
+                            </li>
+                            <li>
+                                <a href="#previousPage">previousPage</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#back">back</a>
+                            </li>
+                            <li>
+                                <a href="#goToReceta">goToReceta</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidEnter">ionViewDidEnter</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#removeCocinada">removeCocinada</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>, recetasService: <a href="../injectables/RecetasService.html">RecetasService</a>, toastService: <a href="../injectables/ToastService.html">ToastService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:18</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>recetasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RecetasService.html" target="_self" >RecetasService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ToastService.html" target="_self" >ToastService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="back"></a>
+                    <span class="name">
+                        <b>
+                            back
+                        </b>
+                        <a href="#back"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>back()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToReceta"></a>
+                    <span class="name">
+                        <b>
+                            goToReceta
+                        </b>
+                        <a href="#goToReceta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToReceta(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewDidEnter"></a>
+                    <span class="name">
+                        <b>
+                            ionViewDidEnter
+                        </b>
+                        <a href="#ionViewDidEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewDidEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeCocinada"></a>
+                    <span class="name">
+                        <b>
+                            removeCocinada
+                        </b>
+                        <a href="#removeCocinada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeCocinada(id, name, valoration, tags)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>valoration</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="auth"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            auth</b>
+                            <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="categoria"></a>
+                        <span class="name">
+                            <b>
+                            categoria</b>
+                            <a href="#categoria"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cocinadas"></a>
+                        <span class="name">
+                            <b>
+                            cocinadas</b>
+                            <a href="#cocinadas"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Cocinadas.html" target="_self" >Cocinadas[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentRoute"></a>
+                        <span class="name">
+                            <b>
+                            currentRoute</b>
+                            <a href="#currentRoute"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="previousPage"></a>
+                        <span class="name">
+                            <b>
+                            previousPage</b>
+                            <a href="#previousPage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/cocinadas/cocinadas.page.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { User, AuthService, Cocinadas } from &#x27;src/app/services/auth.service&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { RecetasService } from &#x27;src/app/services/recetas/recetas.service&#x27;;
+import { ToastService } from &#x27;src/app/util/toast.service&#x27;;
+
+@Component({
+  selector: &#x27;app-cocinadas&#x27;,
+  templateUrl: &#x27;./cocinadas.page.html&#x27;,
+  styleUrls: [&#x27;./cocinadas.page.scss&#x27;],
+})
+export class CocinadasPage implements OnInit {
+  user: User;
+  categoria: string;
+  cocinadas: Cocinadas[];
+
+  currentRoute: string;
+  previousPage: string;
+
+  constructor(public auth: AuthService, private recetasService: RecetasService,
+    private toastService: ToastService, private route: ActivatedRoute, private router: Router) {
+      this.currentRoute &#x3D; btoa(this.router.url); 
+      this.previousPage &#x3D; this.route.snapshot.paramMap.get(&#x27;p&#x27;) ? atob(this.route.snapshot.paramMap.get(&#x27;p&#x27;)) : null;
+     }
+
+  ngOnInit() {
+    this.categoria &#x3D; this.route.snapshot.paramMap.get(&#x27;categoria&#x27;);
+  }
+
+  ionViewDidEnter() {
+    this.auth.getUser().subscribe((user: User) &#x3D;&gt; {
+      this.user &#x3D; user;
+      this.cocinadas &#x3D; this.user.cocinadas[this.categoria];
+    }, err &#x3D;&gt; {
+      console.log(&quot;Couldn&#x27;t retrieve user&quot;);
+    });
+  }
+
+  removeCocinada(id, name, valoration, tags) {
+    this.auth.removeCocinadaRecipe(id, this.categoria, name, valoration, tags).then(() &#x3D;&gt; {
+      this.toastService.presentToast(&quot;Receta eliminada de tu lista de cocinadas&quot;);
+    });
+  }
+
+  goToReceta(id) {
+    this.recetasService.getRecipe(id).then((receta) &#x3D;&gt; {
+      this.recetasService.selectedReceta &#x3D; receta;
+
+      this.router.navigate([&#x27;/receta/&#x27;, {p: this.currentRoute}]).then((e) &#x3D;&gt; {
+        if (e) {
+          console.log(&quot;Navigation is successful!&quot;);
+        } else {
+          console.log(&quot;Navigation has failed!&quot;);
+        }
+      });
+    });
+  }
+
+  back() { this.router.navigateByUrl(this.previousPage); }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+    &lt;ion-toolbar color&#x3D;&quot;primary&quot;&gt;
+        &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+            &lt;ion-button (click)&#x3D;&quot;back()&quot;&gt;
+                &lt;ion-icon name&#x3D;&quot;arrow-round-back&quot;&gt;&lt;/ion-icon&gt;
+            &lt;/ion-button&gt;
+        &lt;/ion-buttons&gt;
+        &lt;ion-title&gt;Recetas cocinadas&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+    &lt;ion-list&gt;
+        &lt;ion-list-header&gt;
+            &lt;ion-label&gt;Recetas {{categoria}}s&lt;/ion-label&gt;
+        &lt;/ion-list-header&gt;
+        &lt;ion-item-sliding *ngFor&#x3D;&quot;let r of cocinadas&quot;&gt;
+            &lt;ion-item (click)&#x3D;&quot;goToReceta(r.id)&quot;&gt;
+                &lt;ion-thumbnail item-start class&#x3D;&quot;ion-margin-end&quot;&gt;
+                    &lt;ion-img src&#x3D;&quot;assets/img/recetas/{{r.id}}.jpg&quot;&gt;&lt;/ion-img&gt;
+                &lt;/ion-thumbnail&gt;
+                &lt;ion-label&gt;
+                    &lt;h2&gt;{{r.name}}&lt;/h2&gt;
+                    &lt;p&gt;Valoración&lt;/p&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;r.valoration &#x3D;&#x3D; &#x27;excelente&#x27;&quot;&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;r.valoration &#x3D;&#x3D; &#x27;muybuena&#x27;&quot;&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;r.valoration &#x3D;&#x3D; &#x27;buena&#x27;&quot;&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;r.valoration &#x3D;&#x3D; &#x27;regular&#x27;&quot;&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;r.valoration &#x3D;&#x3D; &#x27;mal&#x27;&quot;&gt;
+                        &lt;ion-icon name&#x3D;&quot;star&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                        &lt;ion-icon name&#x3D;&quot;star-outline&quot;&gt;&lt;/ion-icon&gt;
+                    &lt;/p&gt;
+
+                &lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;ion-item-options side&#x3D;&quot;end&quot;&gt;
+                &lt;ion-item-option (click)&#x3D;&quot;removeCocinada(r.id, r.name, r.valoration, r.tags)&quot; color&#x3D;&quot;danger&quot;&gt;Eliminar&lt;/ion-item-option&gt;
+            &lt;/ion-item-options&gt;
+        &lt;/ion-item-sliding&gt;
+    &lt;/ion-list&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./cocinadas.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>    <ion-toolbar color="primary">        <ion-buttons slot="start">            <ion-button (click)="back()">                <ion-icon name="arrow-round-back"></ion-icon>            </ion-button>        </ion-buttons>        <ion-title>Recetas cocinadas</ion-title>    </ion-toolbar></ion-header><ion-content>    <ion-list>        <ion-list-header>            <ion-label>Recetas {{categoria}}s</ion-label>        </ion-list-header>        <ion-item-sliding *ngFor="let r of cocinadas">            <ion-item (click)="goToReceta(r.id)">                <ion-thumbnail item-start class="ion-margin-end">                    <ion-img src="assets/img/recetas/{{r.id}}.jpg"></ion-img>                </ion-thumbnail>                <ion-label>                    <h2>{{r.name}}</h2>                    <p>Valoración</p>                    <p *ngIf="r.valoration == \'excelente\'">                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                    </p>                    <p *ngIf="r.valoration == \'muybuena\'">                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                    </p>                    <p *ngIf="r.valoration == \'buena\'">                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                    </p>                    <p *ngIf="r.valoration == \'regular\'">                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                    </p>                    <p *ngIf="r.valoration == \'mal\'">                        <ion-icon name="star"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                        <ion-icon name="star-outline"></ion-icon>                    </p>                </ion-label>            </ion-item>            <ion-item-options side="end">                <ion-item-option (click)="removeCocinada(r.id, r.name, r.valoration, r.tags)" color="danger">Eliminar</ion-item-option>            </ion-item-options>        </ion-item-sliding>    </ion-list></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CocinadasPage', 'selector': 'app-cocinadas'},{'name': 'InicioPage', 'selector': 'app-inicio'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PerfilPage', 'selector': 'app-perfil'},{'name': 'RecetaPage', 'selector': 'app-receta'},{'name': 'RecetasPage', 'selector': 'app-recetas'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SignupPage', 'selector': 'app-signup'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CocinadasPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CocinadasPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,807 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>yourchef documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">yourchef documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>SettingsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/settings/settings.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-settings</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./settings.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./settings.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#previousPage">previousPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toastService">toastService</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#back">back</a>
+                            </li>
+                            <li>
+                                <a href="#edit">edit</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidEnter">ionViewDidEnter</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, toastService: <a href="../injectables/ToastService.html">ToastService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/settings/settings.page.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ToastService.html" target="_self" >ToastService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="back"></a>
+                    <span class="name">
+                        <b>
+                            back
+                        </b>
+                        <a href="#back"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>back()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/pages/settings/settings.page.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edit"></a>
+                    <span class="name">
+                        <b>
+                            edit
+                        </b>
+                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>edit(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/pages/settings/settings.page.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewDidEnter"></a>
+                    <span class="name">
+                        <b>
+                            ionViewDidEnter
+                        </b>
+                        <a href="#ionViewDidEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewDidEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/pages/settings/settings.page.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/app/pages/settings/settings.page.ts:19</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="previousPage"></a>
+                        <span class="name">
+                            <b>
+                            previousPage</b>
+                            <a href="#previousPage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/settings/settings.page.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toastService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            toastService</b>
+                            <a href="#toastService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/ToastService.html" target="_self" >ToastService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/settings/settings.page.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/settings/settings.page.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { AuthService, User } from &#x27;src/app/services/auth.service&#x27;;
+import { ToastService } from &#x27;src/app/util/toast.service&#x27;;
+
+@Component({
+  selector: &#x27;app-settings&#x27;,
+  templateUrl: &#x27;./settings.page.html&#x27;,
+  styleUrls: [&#x27;./settings.page.scss&#x27;],
+})
+export class SettingsPage implements OnInit {
+  user: User;
+  previousPage: string;
+
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, public toastService: ToastService) {
+    this.previousPage &#x3D; this.route.snapshot.paramMap.get(&#x27;p&#x27;) ? atob(this.route.snapshot.paramMap.get(&#x27;p&#x27;)) : null;
+   }
+
+  ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.auth.getUser().subscribe((user: User) &#x3D;&gt; {
+      this.user &#x3D; user;
+    }, err &#x3D;&gt; {
+      console.log(&quot;Couldn&#x27;t retrieve user&quot;);
+    });
+
+    // Información de ayuda que solo se muestra la primera vez que se accede a los ajustes
+    this.auth.showSettingsHelp().then((val) &#x3D;&gt; {
+      if (!val) {
+        this.toastService.presentToast(&quot;Marca las opciones y se guardarán automáticamente&quot;);
+        this.auth.showedSettingsHelp().then((val) &#x3D;&gt; console.log(&quot;Showed settings help &quot; + val));
+      }
+    });
+  }
+
+  edit(event) {
+    this.auth.updateSettings(this.user.ajustes)
+    .then(() &#x3D;&gt; {
+      console.log(&quot;Settings updated&quot;);
+    });
+  }
+
+  back() { this.router.navigateByUrl(this.previousPage); }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+    &lt;ion-toolbar color&#x3D;&quot;primary&quot;&gt;
+        &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+            &lt;ion-button (click)&#x3D;&quot;back()&quot;&gt;
+                &lt;ion-icon name&#x3D;&quot;arrow-round-back&quot;&gt;&lt;/ion-icon&gt;
+            &lt;/ion-button&gt;
+        &lt;/ion-buttons&gt;
+        &lt;ion-title&gt;Ajustes&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content *ngIf&#x3D;&quot;user&quot;&gt;
+
+    &lt;p padding&gt;Configura las siguientes opciones para mostrarte recetas según tus preferencias&lt;/p&gt;
+
+    &lt;ion-list&gt;
+        &lt;ion-list-header&gt;
+            Alérgenos
+        &lt;/ion-list-header&gt;
+
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin gluten&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.gluten&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin huevo&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.huevo&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin lácteos&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.lacteos&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin azúcar&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.azucar&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin soja&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.soja&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt; Sin frutos secos&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.frutosSecos&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Libre de nueces y de cacahuetes&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.nueces&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin pescado&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.pescado&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Sin mariscos&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.mariscos&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+
+    &lt;/ion-list&gt;
+
+    &lt;ion-list&gt;
+        &lt;ion-list-header&gt;
+            Dieta
+        &lt;/ion-list-header&gt;
+
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Bajo en carbohidratos&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.carbohidratos&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Bajo en sodio&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.sodio&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Mucha fibra&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.fibra&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Alto valor protéico&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.proteico&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Bajo en grasas&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.grasas&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Poca grasa&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.pocaGrasa&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Equilibrada&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.equilibrada&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Vegetariano&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.vegetariano&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+        &lt;ion-item&gt;
+            &lt;ion-label&gt;Paleo&lt;/ion-label&gt;
+            &lt;ion-toggle [(ngModel)]&#x3D;&quot;user.ajustes.paleo&quot; (ionChange)&#x3D;&quot;edit($event)&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/ion-toggle&gt;
+        &lt;/ion-item&gt;
+
+    &lt;/ion-list&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./settings.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>    <ion-toolbar color="primary">        <ion-buttons slot="start">            <ion-button (click)="back()">                <ion-icon name="arrow-round-back"></ion-icon>            </ion-button>        </ion-buttons>        <ion-title>Ajustes</ion-title>    </ion-toolbar></ion-header><ion-content *ngIf="user">    <p padding>Configura las siguientes opciones para mostrarte recetas según tus preferencias</p>    <ion-list>        <ion-list-header>            Alérgenos        </ion-list-header>        <ion-item>            <ion-label>Sin gluten</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.gluten" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin huevo</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.huevo" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin lácteos</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.lacteos" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin azúcar</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.azucar" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin soja</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.soja" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label> Sin frutos secos</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.frutosSecos" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Libre de nueces y de cacahuetes</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.nueces" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin pescado</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.pescado" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Sin mariscos</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.mariscos" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>    </ion-list>    <ion-list>        <ion-list-header>            Dieta        </ion-list-header>        <ion-item>            <ion-label>Bajo en carbohidratos</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.carbohidratos" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Bajo en sodio</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.sodio" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Mucha fibra</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.fibra" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Alto valor protéico</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.proteico" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Bajo en grasas</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.grasas" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Poca grasa</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.pocaGrasa" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Equilibrada</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.equilibrada" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Vegetariano</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.vegetariano" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>        <ion-item>            <ion-label>Paleo</ion-label>            <ion-toggle [(ngModel)]="user.ajustes.paleo" (ionChange)="edit($event)" color="primary"></ion-toggle>        </ion-item>    </ion-list></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CocinadasPage', 'selector': 'app-cocinadas'},{'name': 'InicioPage', 'selector': 'app-inicio'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'PerfilPage', 'selector': 'app-perfil'},{'name': 'RecetaPage', 'selector': 'app-receta'},{'name': 'RecetasPage', 'selector': 'app-recetas'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'SignupPage', 'selector': 'app-signup'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SettingsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SettingsPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
