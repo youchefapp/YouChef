@@ -73,7 +73,7 @@
 
             <ion-item *ngIf="isAuthenticated">
                 <ion-label>Mostrar recomendaciones</ion-label>
-                <ion-toggle color="primary"></ion-toggle>
+                <ion-toggle [(ngModel)]="filterRecommendations" (ionChange)="filterByRecommendations()" color="primary"></ion-toggle>
             </ion-item>
         </ion-list>
 

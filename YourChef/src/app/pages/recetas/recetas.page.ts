@@ -9,6 +9,7 @@ import {
 
 import { ToastService } from 'src/app/util/toast.service';
 import { AuthService, User } from 'src/app/services/auth.service';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 
 const LIMIT = 5;
 
@@ -33,12 +34,13 @@ export class RecetasPage {
   currentRoute: string;
 
   filterBySettings: boolean;
+  filterRecommendations: boolean;
   user: User;
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   constructor(private recetasService: RecetasService, public loadingController: LoadingController,
-    private menu: MenuController, public toastService: ToastService,
+    private menu: MenuController, public toastService: ToastService, private estadisticas: EstadisticasService,
     private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.offset = 0;
     this.searchVal = "";
@@ -48,6 +50,7 @@ export class RecetasPage {
     this.alergenos = [];
 
     this.filterBySettings = false;
+    this.filterRecommendations = false;
     this.isAuthenticated = false;
 
     this.currentRoute = btoa(this.router.url);
@@ -139,6 +142,8 @@ export class RecetasPage {
     this.dificultad = [];
     this.dieta = [];
     this.alergenos = [];
+    this.filterBySettings = false;
+    this.filterRecommendations = false;
 
     this.recetas = this.allRecetas;
   }
@@ -214,6 +219,22 @@ export class RecetasPage {
       if (this.user.ajustes.soja) this.alergenos.push("Sin soja");
       if (this.user.ajustes.vegetariano) this.dieta.push("Vegetariano");
   
+      this.filter();
+    }
+    else {
+      this.clearFilters();
+    }    
+  }
+
+  filterByRecommendations() {
+    if (this.filterRecommendations) {
+      let stats = this.estadisticas.getEstadisticasValoracion(this.user);
+
+      for (let i = 0; i < stats.labels.length; i++) {
+        // Recomedamos recetas que tengan una valoración media > 3
+        if (stats.data[i] > 3 ) this.cocina.push(stats.labels[i]);
+      }
+
       this.filter();
     }
     else {
